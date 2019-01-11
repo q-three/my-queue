@@ -4,10 +4,12 @@ const ctrl = require('../controllers/users')
 
 router.post('/signup', ctrl.signup)
 
-// router.post('/u/:id/friends') //add friend, /u because I think starting with just /:id will conflict with signup
-// router.put('/u/:id') //edit User info
-// router.get('/u/:id') //get User
-// router.get('/u/:id/queue') //get User's Queue Items
+router.get('/u') //get All Users
+router.post('/u/:id/friends', ctrl.addFriend) //add friend, /u because I think starting with just /:id will conflict with signup
+router.get('/u/:id/friends', ctrl.getFriends) //get friends list
+router.put('/u/:id', ctrl.editUser) //edit User info
+router.get('/u/:id', ctrl.getUser) //get User
+router.get('/u/:id/queue', ctrl.getUserQueue) //get User's Queue Items
 
 
 
