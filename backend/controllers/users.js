@@ -24,4 +24,28 @@ function signup(req, res, next) {
 }
 
 
-module.exports = {signup}
+function getAll(req,res,next){
+
+} //get all users
+
+function getUser(req,res,next){
+
+} //get specific user by id
+
+function addFriend(req,res,next){
+
+} //add a friend to a user's friend-list, makes a friend relation for both users
+
+function getFriends(req,res,next){
+
+} //get friendlist for specific user
+
+function editUser(req,res,next){
+
+} //edit user's profile
+
+function getUserQueue(req,res,next){
+
+} //get list of queue items for a specific user
+
+module.exports = {signup, getAll, getUser, addFriend, getFriends, editUser, getUserQueue}

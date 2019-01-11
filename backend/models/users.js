@@ -24,5 +24,29 @@ function signup(f_name, l_name, username, password) {
         })
 }
 
+function getAll(){
 
-module.exports = {signup}
+} //get all users
+
+function getUser(id){
+
+} //get specific user by id
+
+function addFriend('?'){
+
+} //add a friend to a user's friend-list, makes a friend relation for both users
+
+function getFriends(id){
+
+} //get friendlist for specific user
+
+function editUser(id, edits){
+
+} //edit user's profile
+
+function getUserQueue(id){
+
+} //get list of queue items for a specific user
+
+
+module.exports = {signup, getAll, getUser, addFriend, getFriends, editUser, getUserQueue}
