@@ -291,3 +291,56 @@ input, button[type="submit"]{
     left:10px;
     color:#333;
 }
+
+/*===========Friends============*/
+.friendSearch{
+    height:50px;
+    margin:10px 10px 0;
+    width: calc(100% - 20px);
+    border-radius: 32px;
+    border:1px solid #ccc;
+    font-size:18px;
+    padding-left:20px;
+    position: relative;
+    z-index:99;
+}
+
+.searchResults{
+    background-color:white;
+    z-index:99;
+    position:relative;
+    border:1px solid #ccc;
+    width: calc(100% - 64px);
+    min-height:50px;
+    animation:slideDown .5s ease-in;
+    overflow:hidden;
+    margin:0 32px;
+}
+@keyframes slideDown{
+    0%{height:0px}
+    100%{height:200px}
+}
+
+.userResult{
+    height:75px;
+    display:flex;
+    justify-content: space space-between;
+}
+.userImg{
+    height:75px;
+    width:75px;
+    margin-right:20px;
+}
+
+.userResult p {
+    font-size: 24px;
+    line-height:75px;
+}
+.userResult{
+    border-bottom:1px solid #ccc;
+    margin-bottom:5px;
+}
+
+.emptyState{
+    margin: 10px;
+}
