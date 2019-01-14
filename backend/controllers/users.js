@@ -29,7 +29,7 @@ function checkFriends(req,res,next){
 
     model.checkFriends(id, friend)
     .then(result => {
-        if(result === false) return next()
+        if(result === false) return next() //false meaning they are not already friends, false is good
         throw {error: 400, message: `ERROR ${result}`} //I don't think this can get here, but just in case
     })
     .catch(next)
