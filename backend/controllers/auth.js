@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 
 function login(req, res, next) {
     let { username, password } = req.body
-    console.log(username, password)
     if (!username || !password) return next({ status: 400, message: 'Error with username or password' })
     username = username.toLowerCase()
     return model.login(username, password)
@@ -30,7 +29,7 @@ function authenticate(req, res, next) {
 }
 
 function authStatus(req, res, next) {
-    res.status(200).send({ id: req.claim.sub.id })
+    res.status(200).send({ user: req.claim.sub })
 }
 
 function checkRequest(req, res, next) {
