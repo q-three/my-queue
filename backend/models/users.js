@@ -43,7 +43,8 @@ function checkFriends(id, friendId) {
 
 function getAll(){
     return knex('users')
-        .then(([data]) => {
+        .then(([...data]) => {
+            delete data.password
             return data
         })
         .catch(err => {
@@ -55,6 +56,7 @@ function getUser(id){
     return knex('users')
         .where('id', id)
         .then(([data]) => {
+            delete data.password
             return data
         })
         .catch(err => {
@@ -78,39 +80,42 @@ function addFriend(id, friendId){
 function getFriends(id){
     return knex('friends')
         .where('user_id', id)
-        .then(([data])=> {
+        .then((data)=> {
             const friendsArray = data.map(connection => connection.friend_id)
-            console.log('User-Models-getfriends()', friendsArray)
-            return getManyUsers(friendsArray)
+            // console.log('User-Models-getfriends()', friendsArray)
+            return knex('users')
+            .whereIn('id', friendsArray)
+        })
+        .then(result => {
+            return result.map(x => {
+                delete x.password
+                delete x.l_name
+                delete x.f_name
+                return x
+            })
         })
     //Point here is to get MY list of friends, and return their username, img, and id
 } //get friendlist for specific user
 
-function getManyUsers(friends){
-    //takes an array of userIds and returns an array of objects containing user data (username, img, id)
-    const friendsList = friends.map(friend => {
-        const f = getUser(friend)
-        return {'id': friend, 'username': f.username, 'img': f.img}
-    })
-
-    return friendsList
-}
 
 function editUser(id, edits){
-    const user = getUser(id)
-    update = {'img': user.img, 'f_name': user.f_name, 'l_name': user.l_name} //maybe color scheme?
-    if(edits.img) update.img = edits.img
-    if(edits.f_name) update.f_name = edits.f_name
-    if(edits.l_name) update.l_name = edits.l_name
-    
     return knex('users')
-    .update({update})
-    .then(result => {
-        return result
+    .where('id', id)
+    .then(([user]) => {
+        let update = {'img': user.img, 'f_name': user.f_name, 'l_name': user.l_name} //maybe color scheme?
+        if(edits.img) update.img = edits.img
+        if(edits.f_name) update.f_name = edits.f_name
+        if(edits.l_name) update.l_name = edits.l_name
+        return knex('users')
+        .update(update)
+        .then(result => {
+            return 'User has been updated!'
+        })
+        .catch(err => {
+            throw err
+        })
     })
-    .catch(err => {
-        throw err
-    })
+    
 } //edit user's profile
 
 function getUserQueue(id){
