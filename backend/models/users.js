@@ -107,9 +107,11 @@ function editUser(id, edits){
         if(edits.f_name) update.f_name = edits.f_name
         if(edits.l_name) update.l_name = edits.l_name
         return knex('users')
+        .where('id', id)
         .update(update)
+        .returning('*')
         .then(result => {
-            return 'User has been updated!'
+            return result
         })
         .catch(err => {
             throw err

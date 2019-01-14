@@ -38,10 +38,12 @@ export const EDIT_PROFILE = 'EDIT_PROFILE'
 export function editProfile(payload){
     return async dispatch => {
         try{
-            const response = await request(`/users/u/${payload.id}/`, 'put', payload)
+            const [response] = await request(`/users/u/${payload.id}/`, 'put', payload)
+            console.log(response, '=================================================')
+            delete response.password
             dispatch({
                 type: EDIT_PROFILE,
-                payload: response.data
+                payload: response
             })    
         }catch(err){
             console.error(err)

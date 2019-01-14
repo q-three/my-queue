@@ -36,15 +36,16 @@ class ProtectedPage extends Component{
                         <p className='logout' onClick={this.handleLogOut}>Log Out</p>
                     </div>
                     <div className="greeting">
-                        {this.props.auth.user.img ? <img src={this.props.auth.user.img} alt="user" /> : <div className="letter">{this.props.auth.user.f_name[0].toUpperCase()}</div>}
+                        {console.log(this.props.auth)}
+                        <div className="letter" style={{ backgroundImage: `url("${this.props.auth.user.img}")` }}>{this.props.auth.user.img ? null : this.props.auth.user.f_name[0].toUpperCase()}</div>
                         <p>Welcome, {this.props.auth.user.f_name}.</p>    
                     </div>
                 </header>
-                <Link to='/friends'>
-                    <div className="button">
+                <div className="button">
+                    <Link to='/friends'>
                         <i className="fa fa-users"></i>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
                 <div onClick={this.handleClick} className="button">
                     <i className="fa fa-filter"></i>
                 </div>
