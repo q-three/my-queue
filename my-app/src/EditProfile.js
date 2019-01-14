@@ -25,7 +25,8 @@ class EditProfile extends Component{
     handleSubmit(e){
         e.preventDefault()
         const {id, f_name, l_name, img} = this.state
-        return this.props.editProfile({id, f_name, l_name, img})
+        this.props.editProfile({id, f_name, l_name, img})
+        this.props.history.push('/home')
     }
     
     render(){

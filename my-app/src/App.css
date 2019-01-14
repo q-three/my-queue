@@ -131,7 +131,10 @@ input, button[type="submit"]{
     text-align:center;
     border:2px solid #ccc;
     margin-left:10px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
 .queue{
     margin-top:95px;
 }
@@ -151,6 +154,11 @@ input, button[type="submit"]{
     box-shadow: 2.5px 2.5px 5px 0px rgba(0,0,0,0.5);
     z-index:99; 
 }
+
+.button i{
+    color:white;
+}
+
 .button img{
     height:30px;
     width:30px;

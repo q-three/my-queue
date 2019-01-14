@@ -19,7 +19,6 @@ function login(req, res, next) {
 
 function authenticate(req, res, next) {
     const [, token] = req.headers.authorization.split(' ')
-    console.log('incoming token: ', token)
     if (!token) return next({ status: 401, message: 'Unauthorized, no token' })
     jwt.verify(token, process.env.SECRET, (err, payload) => {
         if (err) return next({ status: 401, message: 'Unauthorized, token not confirmed' })
