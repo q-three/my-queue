@@ -36,13 +36,13 @@ class EditProfile extends Component{
         return (
             <div className="editProfile">
                 <Link to='/home'><i className="fa fa-arrow-left"></i></Link>
-                <div>Edit Profile Page</div>
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <input type="text" name="f_name" required onChange={e => this.handleChange(e)}/>
-                    <input type="text" name="l_name" required onChange={e => this.handleChange(e)}/>
-                    <input type="password" name="oldPassword" required onChange={e => this.handleChange(e)}/>
-                    <input type="password" name="newPassword" required onChange={e => this.handleChange(e)}/>
-                    <input type="password" name="passwordMatch" required onChange={e => this.handleChange(e)}/>
+                    <h3>Edit Profile</h3>
+                    <input type="text" name="f_name" value={this.props.f_name} required onChange={e => this.handleChange(e)}/>
+                    <input type="text" name="l_name" value={this.props.l_name} required onChange={e => this.handleChange(e)}/>
+                    <input type="password" name="oldPassword" placeholder="confirm old password..." required onChange={e => this.handleChange(e)}/>
+                    <input type="password" name="newPassword" placeholder="new password..." required onChange={e => this.handleChange(e)}/>
+                    <input type="password" name="passwordMatch" placeholder="type new password again..." required onChange={e => this.handleChange(e)}/>
                     <input type="file" name="img" required/>
                     <button>Submit</button>
                 </form>
