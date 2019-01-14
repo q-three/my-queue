@@ -275,3 +275,11 @@ input, button[type="submit"]{
     transform:scale(1.1)
 }
 
+/*===========Edit Profile============*/
+.backButton{
+    font-size: 30px;
+    position:absolute;
+    top:10px;
+    left:10px;
+    color:#333;
+}

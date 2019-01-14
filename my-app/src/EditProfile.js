@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {editProfile} from './actions/auth'
 
 class EditProfile extends Component{
     constructor(props){
         super(props)
         this.state = {
-            f_name: this.props.f_name,
-            l_name: this.props.l_name,
-            oldPassword: '',
-            newPassword: '',
-            passwordMatch: '',
+            id: this.props.auth.user.id,
+            f_name: '',
+            l_name: '',
+            img: '',
             error: false
         }
     }
@@ -21,29 +23,20 @@ class EditProfile extends Component{
     }
 
     handleSubmit(e){
-        e.peventDefault()
-        const {f_name, l_name, oldPassword, newPassword, passwordMatch} = this.state
-        if(newPassword !== passwordMatch ) this.setState({error: "Passwords don't match"})
-        if(!oldPassword || !newPassword || !passwordMatch) return {f_name, l_name}
-        if(f_name && l_name && oldPassword && newPassword && passwordMatch) return {f_name, l_name, password: newPassword, passwordMatch}
-
+        e.preventDefault()
+        const {id, f_name, l_name, img} = this.state
+        return this.props.editProfile({id, f_name, l_name, img})
     }
-    componentDidMount(){
-
-    }
-
+    
     render(){
         return (
             <div className="editProfile">
-                <Link to='/home'><i className="fa fa-arrow-left"></i></Link>
+                <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <h3>Edit Profile</h3>
-                    <input type="text" name="f_name" value={this.props.f_name} required onChange={e => this.handleChange(e)}/>
-                    <input type="text" name="l_name" value={this.props.l_name} required onChange={e => this.handleChange(e)}/>
-                    <input type="password" name="oldPassword" placeholder="confirm old password..." required onChange={e => this.handleChange(e)}/>
-                    <input type="password" name="newPassword" placeholder="new password..." required onChange={e => this.handleChange(e)}/>
-                    <input type="password" name="passwordMatch" placeholder="type new password again..." required onChange={e => this.handleChange(e)}/>
-                    <input type="file" name="img" required/>
+                    <input type="text" name="f_name" placeholder={this.props.auth.user.f_name} required onChange={e => this.handleChange(e)}/>
+                    <input type="text" name="l_name" placeholder={this.props.auth.user.l_name} required onChange={e => this.handleChange(e)}/>
+                    <input type="url" name="img" placeholder={this.props.auth.user.img || 'add image url'} onChange={e => this.handleChange(e)}/>
                     <button>Submit</button>
                 </form>
             </div>
@@ -51,4 +44,7 @@ class EditProfile extends Component{
     }
 }
 
-export default EditProfile
+const mapStateToProps = state => ({auth:state.auth})
+const mapDispatchToProps = dispatch => bindActionCreators({editProfile}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)

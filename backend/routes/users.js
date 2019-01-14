@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const ctrl = require('../controllers/users')
 const Qctrl = require('../controllers/queue')
+const Actrl = require('../controllers/auth')
 
 router.post('/signup', ctrl.signup)
 
