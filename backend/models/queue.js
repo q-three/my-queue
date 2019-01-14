@@ -1,7 +1,14 @@
 const knex = require('../db/knex')
 
 function checkUser(userId){
-
+    return knex('users')
+    .where('id', userId)
+    .then(result => {
+        return result
+    })
+    .catch(err => {
+        throw err
+    })
 }
 
 function checkItem(itemId){
@@ -20,7 +27,7 @@ function getAll() {
 
 function getOne(id){
     return knex('q_items')
-    .where('id': id)
+    .where('id', id)
     .then(([result]) => {
         return result
     })
@@ -40,10 +47,15 @@ function addQueueItem(item){
     //     referral_id: req.body.referral_id,
     //     desc: req.body.desc
     // }
-
-
-
-
+    return knex('q_items')
+    .insert(item)
+    .returning('*')
+    .then(result => {
+        return result
+    })
+    .catch(err => {
+        throw err
+    })
 } //post a new item to a user's queue, preceeded by checkUser as middleware
 
 function starItem(id) {
