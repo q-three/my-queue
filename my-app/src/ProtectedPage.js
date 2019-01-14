@@ -40,9 +40,11 @@ class ProtectedPage extends Component{
                         <p>Welcome, {this.props.auth.user.f_name}.</p>    
                     </div>
                 </header>
-                <div className="button">
-                    <i className="fa fa-users"></i>
-                </div>
+                <Link to='/friends'>
+                    <div className="button">
+                        <i className="fa fa-users"></i>
+                    </div>
+                </Link>
                 <div onClick={this.handleClick} className="button">
                     <i className="fa fa-filter"></i>
                 </div>

@@ -38,4 +38,4 @@ function checkRequest(req, res, next) {
     next()
 }   
 
-module.exports = {login, authenticate, authStatus}
+module.exports = {login, authenticate, authStatus, checkRequest}
