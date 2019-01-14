@@ -18,6 +18,7 @@ class App extends Component {
     .then(response => this.props.setAuthentication(response))
     .catch(err => this.props.setAuthentication(err))
   }
+
   render() {
     return (
       <BrowserRouter>

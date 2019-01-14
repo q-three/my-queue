@@ -4,7 +4,7 @@ export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
 export function setAuthentication(claim){
     return {
         type:SET_AUTHENTICATION,
-        payload:claim
+        payload:claim.user
     }
 }
 

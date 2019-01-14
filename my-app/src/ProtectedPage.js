@@ -14,6 +14,7 @@ class ProtectedPage extends Component{
         }
     }
     handleLogOut = () => {
+        localStorage.clear()
         this.props.logOut()
         this.props.history.push('/')
     }
@@ -35,7 +36,7 @@ class ProtectedPage extends Component{
                         <p className='logout' onClick={this.handleLogOut}>Log Out</p>
                     </div>
                     <div className="greeting">
-                        {this.props.auth.user.img ? <img src={this.props.auth.user.img} alt="user"/> : <div className="letter">{this.props.auth.user.f_name[0].toUpperCase()}</div>}
+                        {this.props.auth.user.img ? <img src={this.props.auth.user.img} alt="user" /> : <div className="letter">{this.props.auth.user.f_name[0].toUpperCase()}</div>}
                         <p>Welcome, {this.props.auth.user.f_name}.</p>    
                     </div>
                 </header>
