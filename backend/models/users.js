@@ -24,5 +24,105 @@ function signup(f_name, l_name, username, password) {
         })
 }
 
+function checkFriends(id, friendId) {
+    return knex('friends')
+        .where(function() {
+            this.where('user_id', id).where('friend_id', friendId)
+        })
+        .orWhere(function() {
+            this.where('user_id', friendId).where('friend_id', id)
+        })
+        .then(result => {
+            if(result) throw {error: 400, message: "Users are already friends"}
+            else return false
+        })
+        .catch(err => {
+            throw err
+        })
+}
 
-module.exports = {signup}
+function getAll(){
+    return knex('users')
+        .then(([data]) => {
+            return data
+        })
+        .catch(err => {
+            throw err
+        })
+} //get all users
+
+function getUser(id){
+    return knex('users')
+        .where('id', id)
+        .then(([data]) => {
+            return data
+        })
+        .catch(err => {
+            throw err
+        })
+} //get specific user by id
+
+function addFriend(id, friendId){
+    return knex('friends')
+        .insert([{'user_id': id, 'friend_id': friendId} ,
+                {'user_id': friendId, 'friend_id': id} ])
+        .then(() => {
+            return getUser(friendId)
+    //we expect to return the user's info you are friends with, so do a get for that user and include their f_name for the response
+        })
+        .catch(err => {
+            throw err
+        })
+} //add a friend to a user's friend-list, makes a friend relation for both users
+
+function getFriends(id){
+    return knex('friends')
+        .where('user_id', id)
+        .then(([data])=> {
+            const friendsArray = data.map(connection => connection.friend_id)
+            console.log('User-Models-getfriends()', friendsArray)
+            return getManyUsers(friendsArray)
+        })
+    //Point here is to get MY list of friends, and return their username, img, and id
+} //get friendlist for specific user
+
+function getManyUsers(friends){
+    //takes an array of userIds and returns an array of objects containing user data (username, img, id)
+    const friendsList = friends.map(friend => {
+        const f = getUser(friend)
+        return {'id': friend, 'username': f.username, 'img': f.img}
+    })
+
+    return friendsList
+}
+
+function editUser(id, edits){
+    const user = getUser(id)
+    update = {'img': user.img, 'f_name': user.f_name, 'l_name': user.l_name} //maybe color scheme?
+    if(edits.img) update.img = edits.img
+    if(edits.f_name) update.f_name = edits.f_name
+    if(edits.l_name) update.l_name = edits.l_name
+    
+    return knex('users')
+    .update({update})
+    .then(result => {
+        return result
+    })
+    .catch(err => {
+        throw err
+    })
+} //edit user's profile
+
+function getUserQueue(id){
+    return knex('q_items')
+    .where('user_id', id)
+    .then(([data]) => {
+        return data
+    })
+    .catch(err => {
+        throw err
+    })
+} //get list of queue items for a specific user
+
+
+module.exports = {signup, getAll, getUser, addFriend, getFriends, editUser, getUserQueue, checkFriends}
