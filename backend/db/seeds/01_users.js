@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return knex('users').insert([
         {id: 1, f_name: 'Brendan', l_name: 'Woodell', username: 'beamer92', password: '$2b$10$5t2MCaI.4oXNZc0d1rbTrOhCFTAiSfIj.9c8oQZ58sEQGEa8mkUdq'},
-        {id: 2, f_name: 'Brad', l_name: 'Majors', username: 'Arsehole', password: '$2b$10$BA6Xp9.iw3wK433pNVJsQOBV9mOmiIOCuc57oBtf/TNXrHEqRnOPm'}
+        {id: 2, f_name: 'Brad', l_name: 'Majors', username: 'arsehole', password: '$2b$10$BA6Xp9.iw3wK433pNVJsQOBV9mOmiIOCuc57oBtf/TNXrHEqRnOPm'}
       
       ])
       .then(() =>{
