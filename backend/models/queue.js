@@ -11,10 +11,6 @@ function checkUser(userId){
     })
 }
 
-function checkItem(itemId){
-
-}
-
 function getAll() {
     return knex('q_items')
     .then(result => {
@@ -29,6 +25,7 @@ function getOne(id){
     return knex('q_items')
     .where('id', id)
     .then(([result]) => {
+        if(!result) throw {error:404, message: 'That queue item does not exist!'}
         return result
     })
     .catch(err => {
@@ -37,16 +34,6 @@ function getOne(id){
 } //get specific queue item by id
 
 function addQueueItem(item){
-    // item = {
-    //     user_id : req.body.user_id, 
-    //     type: req.body.type,
-    //     read: false,
-    //     starred: false,
-    //     url: req.body.url,
-    //     img: req.body.img,
-    //     referral_id: req.body.referral_id,
-    //     desc: req.body.desc
-    // }
     return knex('q_items')
     .insert(item)
     .returning('*')
@@ -59,12 +46,32 @@ function addQueueItem(item){
 } //post a new item to a user's queue, preceeded by checkUser as middleware
 
 function starItem(id) {
-
+    return getOne(id)
+    .then(result => {
+        return knex('q_items')
+        .where('id', id)
+        .update('starred', !result.starred)
+        .returning('*')
+    })
+    .then(result => {
+        return result
+    })
+    .catch(err => {
+        throw err
+    })
 } //updates queue item to be starred
 
 function deleteItem(id){
-
+    return knex('q_items')
+    .where('id', id)
+    .del()
+    .then(result => {
+        return result
+    })
+    .catch(err => {
+        throw err
+    })
 } //deletes a queue item
 
 
-module.exports = {getAll, getOne, addQueueItem, starItem, deleteItem, checkUser, checkItem}
+module.exports = {getAll, getOne, addQueueItem, starItem, deleteItem, checkUser}

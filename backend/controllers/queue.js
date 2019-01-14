@@ -14,10 +14,9 @@ function checkUser(req,res,next){
 } //check that a user Exists, meant for the user a card is being made FOR, not the user who is creating it
 
 function checkItem(req,res,next){
-    model.checkItem(req.params.id)
+    model.getOne(req.params.id)
     .then(result => {
         if(result) next()
-        else throw {error: 400, message: `ERROR ${result}`}
     })
     .catch(err => {
         next(err)
@@ -62,9 +61,9 @@ function addQueueItem(req, res, next){
 } //post a new item to a user's queue, preceeded by checkUser as middleware
 
 function starItem(req,res,next) {
-    model.starItem(id, edits)
+    model.starItem(req.params.id)
     .then(result => {
-        res.status(200).send('That item has been Starred!')
+        res.status(200).send(result)
     })
     .catch(next)
 } //updates queue item to be starred
