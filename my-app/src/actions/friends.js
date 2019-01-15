@@ -5,7 +5,7 @@ export function getFriends(payload){
   console.log(payload)
   return async dispatch => {
     try {
-      const response = await request(`/users/u/${payload.userId}/friends`, 'post', payload.friendId)
+      const response = await request(`/users/u/${payload.userId}/friends`, 'get')
       dispatch({
         type: GET_FRIENDS,
         payload:response

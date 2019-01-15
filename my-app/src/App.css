@@ -344,3 +344,23 @@ input, button[type="submit"]{
 .emptyState{
     margin: 10px;
 }
+
+.inputBox{
+    height:40px;
+    margin:10px 10px 0;
+    width: calc(100% - 20px);
+    border-radius: 32px;
+    border:1px solid #ccc;
+    font-size:14px;
+    padding-left:20px;
+    position: relative;
+    z-index:99;
+}
+
+.btn{
+    width: 30%;
+    border-radius: 32px;
+    border:1px solid #ccc;
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    font-weight: 700;
+}
