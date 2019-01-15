@@ -51,3 +51,17 @@ export function filter(val){
     payload: val
   }
 }
+
+export const ADD_ITEM = 'ADD_ITEM'
+export function addItem(body){
+  return async dispatch => {
+    try{
+      const response = await request('/queue', 'post', body)
+      console.log(response)
+      dispatch({
+        type: ADD_ITEM,
+        payload: response.data
+      })
+    }catch(err){}
+  }
+}
