@@ -32,7 +32,7 @@ function checkFriends(id, friendId) {
         .orWhere(function() {
             this.where('user_id', friendId).where('friend_id', id)
         })
-        .then(result => {
+        .then(([result]) => {
             if(result) throw {error: 400, message: "Users are already friends"}
             else return false
         })

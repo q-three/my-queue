@@ -36,7 +36,6 @@ class ProtectedPage extends Component{
                         <p className='logout' onClick={this.handleLogOut}>Log Out</p>
                     </div>
                     <div className="greeting">
-                        {console.log(this.props.auth)}
                         <div className="letter" style={{ backgroundImage: `url("${this.props.auth.user.img}")` }}>{this.props.auth.user.img ? null : this.props.auth.user.f_name[0].toUpperCase()}</div>
                         <p>Welcome, {this.props.auth.user.f_name}.</p>    
                     </div>

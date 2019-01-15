@@ -1,8 +1,8 @@
 const model = require('../models/queue')
 
 function checkUser(req,res,next){
-    if(!req.body.user_id) throw {error: 400, message: 'Need to select a friend!'}
-    model.checkUser(req.body.user_id)
+    if(!req.body.id) throw {error: 400, message: 'Need to select a friend!'}
+    model.checkUser(req.body.id)
     .then(result => {
         if(result) next()
         else throw {error: 404, message: 'Friend not found, please try again'}

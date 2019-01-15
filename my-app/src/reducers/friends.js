@@ -13,8 +13,7 @@ export default function(state=initialState, {type, payload}){
     case GET_ALL_USERS:
       return {...state, users: payload}
     case ADD_FRIEND:
-      const newFriends = [...state.friends].push(payload)
-      return {...state, friends: newFriends}
+      return state
     default:
       return state
   }
