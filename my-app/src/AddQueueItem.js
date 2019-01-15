@@ -14,7 +14,8 @@ class AddQueueItem extends Component{
         this.state={
             selectedType: 'Music',
             desc: '',
-            url: ''
+            url: '',
+            success: false
         }
     }
 
@@ -43,23 +44,25 @@ class AddQueueItem extends Component{
         e.preventDefault()
         const item = {
             id: this.props.friends.selectedUser,
+            user_id: this.props.friends.selectedUser,
             referral_id: this.props.auth.user.id,
             desc: this.state.desc,
             url: this.state.url,
             type: this.state.selectedType
         }
         this.props.addItem(item)
+        this.setState({
+            success: 'Item added!'
+        })
     }
+
+    
     render(){
         return(
             <div className="addQueueItem">
+                {console.log(this.state)}
                 <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
-
-                <OmniSearch/>
-                <hr/>
-
                 <form onSubmit={this.submit}>
-                    <h3>Add Recommendation to a Friend's Queue</h3><br/><br/>
                     <label htmlFor='friendSrch'>Add For: </label>
                     <select className="selectSearch" name="friendSrch" onChange={this.changeUser}>
                         <option value={this.props.auth.user.id} >{this.props.auth.user.username}</option>
@@ -67,25 +70,30 @@ class AddQueueItem extends Component{
                            return <SelectFriend value={x.id} username={x.username} key={x.id}/>
                         })}
                     </select>
-                    
-                    <br/><br/><br/>
-                    <label htmlFor='typeSelect'>Category</label>    
-                    <select name='typeSelect' className="selectSearch" onChange={this.selectType}>
-                        <option value='music'>Music</option>
-                        <option value='food'>Food</option>
-                        <option value='news'>News</option>
-                        <option value='video'>Video</option>
-                        <option value='generic'>Check This Out</option>
-                    </select>   
-                    <br/><br/>
+                <hr />
+                <label htmlFor='omniSearch'>Search:</label>
+                <OmniSearch name="omniSearch"/>
+                <hr/>
 
-                    <label htmlFor='desc'>Description</label>    
-                    <input className='inputBox' type='text' name='desc' value={this.state.desc} onChange={this.handleChange}></input>
-                    <label htmlFor='url'>URL</label>   
-                    <input className='inputBox' type='text' name='url' value={this.state.url} onChange={this.handleChange}></input>
-                    <br/><br/>
-                    <input type='submit' className='btn'></input>
+                 <p>Didn't find what you were looking for? <br/>Add your own.</p>
+                <label htmlFor='typeSelect'>Category</label>    
+                <select name='typeSelect' className="selectSearch" onChange={this.selectType}>
+                    <option value='music'>Music</option>
+                    <option value='video'>Video</option>
+                    <option value='games'>Games</option>
+                    <option value='places'>Places</option>
+                    <option value='links'>Check This Out</option>
+                </select>   
+                <br/><br/>
+
+                <label htmlFor='desc'>Description</label>    
+                <input className='inputBox' type='text' name='desc' value={this.state.desc} onChange={this.handleChange}></input>
+                <label htmlFor='url'>URL</label>   
+                <input className='inputBox' type='text' name='url' value={this.state.url} onChange={this.handleChange}></input>
+                <br/><br/>
+                <input type='submit' className='btn'></input>
                 </form>
+                {this.state.success ? <div className="success">{this.state.success}</div> : null}
             </div>
         )
     }

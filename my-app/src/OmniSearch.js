@@ -9,21 +9,22 @@ class OmniSearch extends Component{
       type: '',
       query: '',
       error: '',
-      results: false
+      results: false,
+      success: false
     }
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      error: ''
+      error: '',
+      success: false
     })
 
     try{
       if(this.state.type === '') throw new Error('Select a category')
       return request(`/search/${this.state.type}`, 'post', {query: this.state.query})
       .then(response => {
-        console.log(response, '888888888888888888888888888888888888888888888')
         this.setState({
           results: response
         })
@@ -42,6 +43,12 @@ class OmniSearch extends Component{
     })
   }
 
+  successReset = () => {
+    this.setState({
+      success: 'Item added!'
+    })
+  }
+
   render() {
     return (
       <section>
@@ -55,9 +62,10 @@ class OmniSearch extends Component{
           </select>
           <input name="query" type="text" className="omniInput" placeholder='search...' onChange={(e) => this.handleChange(e)}/>
         </div>
-        {this.state.results ? <SearchResults type={this.state.type} results={this.state.results}/> : null}
+        {this.state.results ? <SearchResults handleClick={this.handleClick} successReset={this.successReset} type={this.state.type} results={this.state.results}/> : null}
         {this.state.error === '' ? null : <div className="warning">{this.state.error}</div>}
         {this.state.results ? <div className="closeButton" onClick={this.handleClick}><i className="fa fa-close"></i></div> : null}
+        {this.state.success ? <div className="success">{this.state.success}</div> : null}
       </section>
     )
   }

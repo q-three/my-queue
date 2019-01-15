@@ -12,7 +12,7 @@ class EditProfile extends Component{
             f_name: '',
             l_name: '',
             img: '',
-            error: false
+            error: false, 
         }
     }
     

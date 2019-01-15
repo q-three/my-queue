@@ -19,6 +19,7 @@ class Queue extends Component{
     }
 
     byType = (ele) => {
+        if(!ele || ele.starred === undefined || ele.type === undefined) return false
         if(this.props.queue.filter === 'starred'){
             return ele.starred === true
         }

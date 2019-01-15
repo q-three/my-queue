@@ -6,7 +6,11 @@ import {addItem} from './actions/queue'
 
 class SearchResults extends Component{
   addToQueue = (body) => {
-    
+    body.id = this.props.friends.selectedUser
+    body.user_id = this.props.friends.selectedUser //duplicate values based on schema - both keys are needed.
+    this.props.addItem(body)
+    this.props.successReset()
+    this.props.handleClick()
   }
 
   render(){
@@ -23,7 +27,8 @@ class SearchResults extends Component{
                       img:item.img, 
                       desc: item.title, 
                       referral_id: this.props.auth.user.id 
-                    })} />
+                    })}
+                  />
           })
         : <p>...</p>}
       </div>
@@ -31,7 +36,7 @@ class SearchResults extends Component{
   }
 }
 
-const mapStateToProps = state => ({auth: state.auth, queue: state.queue})
+const mapStateToProps = state => ({auth: state.auth, queue: state.queue, friends: state.friends})
 const mapDispatchToProps = dispatch => bindActionCreators({addItem}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults)
