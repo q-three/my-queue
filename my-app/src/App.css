@@ -194,17 +194,23 @@ input, button[type="submit"]{
     z-index:9;
     margin-bottom:20px;
 }
-.cardWrapper{
 
+.queueItem a{
+    outline:1px solid red;
+}
+
+.cardWrapper{
     display:flex;
     padding:10px;
     justify-content:space-between;
     margin-top:15px;
 }
+
 .cardImg{
     padding-bottom:33%;
     width:33%;
     outline:1px solid #ccc;
+    background-size:cover;
 }
 
 .cardText{
@@ -241,6 +247,7 @@ input, button[type="submit"]{
 .slideClose{
     animation: slideClose .5s ease-in;
 }
+
 @keyframes slideOpen{
     0%{width: 0px;}
     100%{width: calc(100% - 60px)}
@@ -251,6 +258,7 @@ input, button[type="submit"]{
     100%{width: 0px;}
 
 }
+
 .filterButton{
     height:30px;
     width:30px;
@@ -262,12 +270,10 @@ input, button[type="submit"]{
     line-height:30px;
 }
 
-
 @keyframes fadeIn{
     0%{opacity:0}
     100%{opacity:1}
 }
-
 
 .gradientScreen{
     position:fixed;

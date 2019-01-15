@@ -122,7 +122,10 @@ function editUser(id, edits){
 
 function getUserQueue(id){
     return knex('q_items')
+    .innerJoin('users', 'users.id', 'referral_id')
     .where('user_id', id)
+    .select('q_items.desc as desc', 'q_items.img as img', 'q_items.id as id', 'q_items.read as read', 'q_items.starred as starred', 'q_items.url as url', 'q_items.type as type', 'users.f_name as referral_name') 
+    //added inner join and select to have cards display 'recommended by, user's first name'
     .then(data => {
         //NOTE: changed the above from ([data]) because it did not return the user's full queue.
         return data

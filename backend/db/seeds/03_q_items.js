@@ -9,12 +9,12 @@ exports.seed = function(knex, Promise) {
       {
         id: 2, user_id: 1, type: 'music', read: false, starred: false,
         url: 'https://open.spotify.com/track/5OMwQFBcte0aWFJFqrr5oj', img: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/AnimalKesha.jpg/220px-AnimalKesha.jpg',
-        referral_id: 2, desc: 'Kesha\'s Tik Tok'
+        referral_id: 2, desc: 'Sumpthin else'
       },
       {
         id: 3, user_id: 1, type: 'music', read: false, starred: false,
         url: 'https://open.spotify.com/track/5OMwQFBcte0aWFJFqrr5oj', img: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/AnimalKesha.jpg/220px-AnimalKesha.jpg',
-        referral_id: 2, desc: 'Kesha\'s Tik Tok'
+        referral_id: 2, desc: 'An example description to discern differences'
       }
     ])
     .then(() =>{

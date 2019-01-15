@@ -41,7 +41,7 @@ class Friends extends Component{
     return (normUsername.includes(normQuery) || normF_name.includes(normQuery) || normL_name.includes(normQuery)) && ele.id !== this.props.auth.user.id 
   }
 
-  // NOTE: worst case time complexity is O(n^2) may need refactoring
+  // NOTE: worst case time complexity is O(n^2); may need refactoring
   byFriends = (ele) => {
     let found = false
     const friendsList = this.props.friends.friends

@@ -14,3 +14,19 @@ export function getQueue(id){
     }
   }
 }
+
+export const STAR_ITEM = 'STAR_ITEM'
+export function starItem(userId, itemId){
+  return async dispatch => {
+    try{
+      const [response] = await request(`/queue/${itemId}`, 'put')
+    
+      dispatch({
+        type:STAR_ITEM,
+        payload:response
+      })
+    }catch(err){
+      console.error(err)
+    }
+  }
+}
