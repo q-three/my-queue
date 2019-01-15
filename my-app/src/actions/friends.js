@@ -44,3 +44,11 @@ export function addFriend(payload){
     }
   }
 }
+
+export const SELECT_USER = 'SELECT_USER'
+export function selectUser(payload){
+  return {
+      type: SELECT_USER,
+      payload: payload
+    }
+}

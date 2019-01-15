@@ -1,5 +1,5 @@
 import {request} from '../utils/request'
-import axios from 'axios'
+// import axios from 'axios'
 
 export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
 export function setAuthentication(claim){
