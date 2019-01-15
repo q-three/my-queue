@@ -338,6 +338,18 @@ input, button[type="submit"]{
     z-index:99;
 }
 
+.selectSearch{
+    height:50px;
+    margin:10px 10px 0;
+    width: calc(100% - 20px);
+    border-radius: 32px;
+    border:1px solid #ccc;
+    font-size:18px;
+    padding-left:20px;
+    position: relative;
+    z-index:99;
+}
+
 .searchResults{
     background-color:white;
     z-index:99;

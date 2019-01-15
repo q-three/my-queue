@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {logout} from './actions/auth'
 import {bindActionCreators} from 'redux'
-import {getFriends} from './actions/friends'
+import {getFriends, selectUser} from './actions/friends'
+import {addItem} from './actions/queue'
 import SelectFriend from './SelectFriend'
 import {Link} from 'react-router-dom'
 import OmniSearch from './OmniSearch'
@@ -12,42 +12,65 @@ class AddQueueItem extends Component{
     constructor(props){
         super(props)
         this.state={
-            selectedFriend: 0
+            selectedType: 'Music',
+            desc: '',
+            url: ''
         }
     }
 
     componentDidMount(){
         this.props.getFriends(this.props.auth.user.id)
+        this.props.selectUser(this.props.auth.user.id)
       }
 
-    selectFriend = (id) => {
+   changeUser = (e) => {
+       this.props.selectUser(e.target.value)
+   }
+
+    selectType = (e) => {
         this.setState({
-            selectedFriend: id
+            selectedType: e.target.value
         })
     }
 
-    clicker = () => {
-        console.log(this.props.friends)
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
+    submit = (e) => {
+        e.preventDefault()
+        const item = {
+            id: this.props.friends.selectedUser,
+            referral_id: this.props.auth.user.id,
+            desc: this.state.desc,
+            url: this.state.url,
+            type: this.state.selectedType
+        }
+        this.props.addItem(item)
+    }
     render(){
         return(
             <div className="addQueueItem">
                 <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
+
                 <OmniSearch/>
                 <hr/>
-                <form>
+
+                <form onSubmit={this.submit}>
                     <h3>Add Recommendation to a Friend's Queue</h3><br/><br/>
                     <label htmlFor='friendSrch'>Add For: </label>
-                    <select className="friendSearch" name="friendSrch">
-                        {/* {this.state.friends.map(x => {
-                            return <option value={x.username}> <SelectFriend selectFriend={() => this.selectFriend(x.id)} img={x.img} username={x.username}/></option>
-                        })} */}
+                    <select className="selectSearch" name="friendSrch" onChange={this.changeUser}>
+                        <option value={this.props.auth.user.id} >{this.props.auth.user.username}</option>
+                        {this.props.friends.friends.map(x => {
+                           return <SelectFriend value={x.id} username={x.username} key={x.id}/>
+                        })}
                     </select>
                     
                     <br/><br/><br/>
                     <label htmlFor='typeSelect'>Category</label>    
-                    <select name='typeSelect' className="friendSearch">
+                    <select name='typeSelect' className="selectSearch" onChange={this.selectType}>
                         <option value='music'>Music</option>
                         <option value='food'>Food</option>
                         <option value='news'>News</option>
@@ -56,12 +79,13 @@ class AddQueueItem extends Component{
                     </select>   
                     <br/><br/>
 
-                    <input className='inputBox' type='text' placeholder='description'></input>
-                    <input className='inputBox' type='text' placeholder="url"></input>
+                    <label htmlFor='desc'>Description</label>    
+                    <input className='inputBox' type='text' name='desc' value={this.state.desc} onChange={this.handleChange}></input>
+                    <label htmlFor='url'>URL</label>   
+                    <input className='inputBox' type='text' name='url' value={this.state.url} onChange={this.handleChange}></input>
                     <br/><br/>
                     <input type='submit' className='btn'></input>
                 </form>
-                <button className='btn' onClick={this.clicker}>HERE</button>
             </div>
         )
     }
@@ -76,7 +100,7 @@ const mapStateToProps = (state) => {
   }
   
   const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({getFriends}, dispatch)
+    return bindActionCreators({getFriends, selectUser, addItem}, dispatch)
   }
   
   export default connect(mapStateToProps, mapDispatchToProps)(AddQueueItem)

@@ -21,6 +21,9 @@ export default function queue(state=initialState, {type, payload}){
       const idxR = readState.findIndex(ele => ele.id === payload.id)
       readState[idxR].read = payload.read
       return {...state, items: readState}
+    case ADD_ITEM:
+      const newItems = state.items.push(payload)
+      return {...state, newItems}
     case FILTER:
       if (state.filter === payload) return {...state, filter: ''}
       return {...state, filter: payload}
