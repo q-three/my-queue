@@ -2,26 +2,29 @@ import React, {Component} from 'react'
 import Result from './Result'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import {addItem} from './actions/queue'
 
 class SearchResults extends Component{
-
-
-  addToQueue = (type, url, img, item_url, desc, user_id) => {
-    const body = {
-      type: '',
-      url: '',
-      refferal_id: '',
-      img: '',
-      desc:'',
-      user_id: ''
-    }
+  addToQueue = (body) => {
+    
   }
 
   render(){
     return (
       <div className="searchResults" data-type={this.props.type}>
         {Array.isArray(this.props.results) 
-        ? this.props.results.map((item, i) => <Result key={i} {...item}/>)
+        ? this.props.results.map((item, i) => {
+          return  <Result 
+                    key={i} 
+                    {...item}
+                    handleClick={() => this.addToQueue({
+                      type:this.props.type, 
+                      url: item.url, 
+                      img:item.img, 
+                      desc: item.title, 
+                      referral_id: this.props.auth.user.id 
+                    })} />
+          })
         : <p>...</p>}
       </div>
     )
@@ -29,6 +32,6 @@ class SearchResults extends Component{
 }
 
 const mapStateToProps = state => ({auth: state.auth, queue: state.queue})
-const mapDispatchToProps = dispatch => bindActionCreators()
+const mapDispatchToProps = dispatch => bindActionCreators({addItem}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults)
