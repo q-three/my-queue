@@ -13,12 +13,12 @@ export default function queue(state=initialState, {type, payload}){
     case STAR_ITEM:
       const starState = [...state.items]
       const idxS = starState.findIndex(ele => ele.id === payload.id)
-      starState[idxS] = payload
+      starState[idxS].starred = payload.starred
       return {...state, items: starState}
     case READ_ITEM:
-      const readState = [...state]
+      const readState = [...state.items]
       const idxR = readState.findIndex(ele => ele.id === payload.id)
-      readState[idxR] = payload
+      readState[idxR].read = payload.read
       return {...state, items: readState}
     default:
       return state
