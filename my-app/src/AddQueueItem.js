@@ -5,6 +5,7 @@ import {getFriends, selectUser} from './actions/friends'
 import {addItem} from './actions/queue'
 import SelectFriend from './SelectFriend'
 import {Link} from 'react-router-dom'
+import OmniSearch from './OmniSearch'
 
 
 class AddQueueItem extends Component{
@@ -53,6 +54,10 @@ class AddQueueItem extends Component{
         return(
             <div className="addQueueItem">
                 <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
+
+                <OmniSearch/>
+                <hr/>
+
                 <form onSubmit={this.submit}>
                     <h3>Add Recommendation to a Friend's Queue</h3><br/><br/>
                     <label htmlFor='friendSrch'>Add For: </label>

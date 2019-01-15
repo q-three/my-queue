@@ -3,7 +3,8 @@ import {GET_QUEUE, STAR_ITEM, READ_ITEM, FILTER, ADD_ITEM} from '../actions/queu
 
 const initialState = {
   items: [],
-  filter: ''
+  filter: '',
+  message: ''
 }
 
 export default function queue(state=initialState, {type, payload}){
@@ -26,6 +27,8 @@ export default function queue(state=initialState, {type, payload}){
     case FILTER:
       if (state.filter === payload) return {...state, filter: ''}
       return {...state, filter: payload}
+    case ADD_ITEM: 
+        return {...state, message: payload}
     default:
       return state
   }
