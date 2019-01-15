@@ -46,7 +46,6 @@ class OmniSearch extends Component{
     return (
       <section>
         <div className="omniSearch">
-          {console.log(this.state)}
           <select name="type" className="omniSelect" onChange={(e) => this.handleChange(e)}>
             <option value="">Select category...</option>
             <option value="music">Music</option>
