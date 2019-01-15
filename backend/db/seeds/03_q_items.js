@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
     url: 'https://open.spotify.com/track/5OMwQFBcte0aWFJFqrr5oj', img: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/AnimalKesha.jpg/220px-AnimalKesha.jpg',
      referral_id: 2, desc: 'Kesha\'s Tik Tok'},
       {
-        id: 2, user_id: 1, type: 'videogame', read: false, starred: false,
+        id: 2, user_id: 1, type: 'game', read: false, starred: false,
         url: 'https://open.spotify.com/track/5OMwQFBcte0aWFJFqrr5oj', img: '',
         referral_id: 2, desc: 'DOOM'
       },
