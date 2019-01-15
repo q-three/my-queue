@@ -5,12 +5,7 @@ import { bindActionCreators } from 'redux';
 import {getQueue, starItem, readItem} from './actions/queue'
 
 class Queue extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            filteringBy: ''
-        }
-    }
+
 
     componentDidMount(){
         this.props.getQueue(this.props.auth.user.id)
@@ -24,6 +19,9 @@ class Queue extends Component{
     }
 
     byType = (ele) => {
+        if(this.props.queue.filter === 'starred'){
+            return ele.starred === true
+        }
         return ele.type.toLowerCase().includes(this.props.queue.filter.toLowerCase())
     }
 

@@ -21,6 +21,7 @@ export default function queue(state=initialState, {type, payload}){
       readState[idxR].read = payload.read
       return {...state, items: readState}
     case FILTER:
+      if (state.filter === payload) return {...state, filter: ''}
       return {...state, filter: payload}
     default:
       return state
