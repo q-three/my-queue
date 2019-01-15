@@ -3,7 +3,6 @@ import React from 'react'
 export default function QueueItem(props){
     return (
         <div className={`queueItem ${props.type} ${props.read ? 'read' : null}`}>
-            {console.log(props, '----------------------------------')}
             <div className="cardWrapper">
                 <i className={`fa ${props.starred ? 'fa-star' : 'fa-star-o'}`} onClick={props.starItem}></i>
                 <div className="cardImg" style={{ backgroundImage: `url("${props.img || 'img/' + props.type + '.png'}")` }} onClick={props.readItem}>

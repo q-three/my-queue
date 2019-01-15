@@ -24,8 +24,7 @@ class Queue extends Component{
     }
 
     byType = (ele) => {
-
-        return ele.type.toLowerCase().includes(this.state.filteringBy.toLowerCase())
+        return ele.type.toLowerCase().includes(this.props.queue.filter.toLowerCase())
     }
 
     render(){

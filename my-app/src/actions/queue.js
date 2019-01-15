@@ -43,3 +43,12 @@ export function readItem(id){
     }catch(err){}
   }
 }
+
+export const FILTER = 'FILTER'
+export function filter(val){
+  console.log(val, '=======================================================')
+  return {
+    type: FILTER,
+    payload: val
+  }
+}

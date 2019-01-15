@@ -1,5 +1,5 @@
-import {GET_QUEUE, STAR_ITEM, READ_ITEM} from '../actions/queue'
-import { stat } from 'fs';
+import {GET_QUEUE, STAR_ITEM, READ_ITEM, FILTER} from '../actions/queue'
+
 
 const initialState = {
   items: [],
@@ -20,6 +20,8 @@ export default function queue(state=initialState, {type, payload}){
       const idxR = readState.findIndex(ele => ele.id === payload.id)
       readState[idxR].read = payload.read
       return {...state, items: readState}
+    case FILTER:
+      return {...state, filter: payload}
     default:
       return state
   }
