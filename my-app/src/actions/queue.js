@@ -44,6 +44,7 @@ export function readItem(id){
   }
 }
 
+
 export const ADD_ITEM = 'ADD_ITEM'
 export function addItem(item){
   return async dispatch => {
@@ -57,5 +58,12 @@ export function addItem(item){
     } catch(err) {
 
     }
+
+export const FILTER = 'FILTER'
+export function filter(val){
+  return {
+    type: FILTER,
+    payload: val
+
   }
 }

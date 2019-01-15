@@ -1,4 +1,5 @@
-import {GET_QUEUE, STAR_ITEM, READ_ITEM, ADD_ITEM} from '../actions/queue'
+import {GET_QUEUE, STAR_ITEM, READ_ITEM, FILTER, ADD_ITEM} from '../actions/queue'
+
 
 const initialState = {
   items: [],
@@ -22,6 +23,9 @@ export default function queue(state=initialState, {type, payload}){
     case ADD_ITEM:
       const newItems = state.items.push(payload)
       return {...state, newItems}
+    case FILTER:
+      if (state.filter === payload) return {...state, filter: ''}
+      return {...state, filter: payload}
     default:
       return state
   }

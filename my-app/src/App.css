@@ -211,6 +211,21 @@ input, button[type="submit"]{
     background-size:cover;
     position:relative;
 }
+.cardImg i{
+    position:absolute;
+    font-size:50px;
+    text-align:center;
+    width:100%;
+    
+    margin:0;
+    padding:0;
+    left:0;
+    height:100%;
+    top:0;
+    height:50px;
+    top:30%;
+    padding-top:20%;
+}
 
 .cardImg a{
     background-color:'black';
@@ -298,7 +313,7 @@ input, button[type="submit"]{
 }
 
 .selected{
-    transform:scale(1.1)
+    background-color:red !important;
 }
 
 /*===========Edit Profile============*/
@@ -361,6 +376,10 @@ input, button[type="submit"]{
     height:75px;
     width:75px;
     margin-right:20px;
+    font-size:60px;
+    line-height:75px;
+    text-align:center;
+    border:1px solid #ccc;
 }
 
 .userResult p {
@@ -388,6 +407,11 @@ input, button[type="submit"]{
     z-index:99;
 }
 
+input:focus{
+    border:1px solid #dd2956;
+    outline:none !important;
+}
+
 .btn{
     width: 30%;
     border-radius: 32px;
@@ -399,6 +423,7 @@ input, button[type="submit"]{
 hr{
     margin-top:10px;
 }
+
 .friendsList{
     margin-top:20px;
 }
