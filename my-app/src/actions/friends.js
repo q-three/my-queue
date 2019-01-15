@@ -4,7 +4,7 @@ export const GET_FRIENDS = 'GET_FRIENDS'
 export function getFriends(id){
   return async dispatch => {
     try {
-      const response = await request(`/users/u/${id}/friends`, 'get')
+      const response = await request(`/users/u/${id}/friends`)
       dispatch({
         type: GET_FRIENDS,
         payload:response
@@ -19,7 +19,7 @@ export const GET_ALL_USERS = 'GET_ALL_USERS'
 export function getAllUsers(){
   return async dispatch => {
     try{
-      const response = await request('/users/u', 'get')
+      const response = await request('/users/u')
       dispatch({
         type: GET_ALL_USERS,
         payload: response

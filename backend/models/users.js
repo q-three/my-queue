@@ -123,7 +123,8 @@ function editUser(id, edits){
 function getUserQueue(id){
     return knex('q_items')
     .where('user_id', id)
-    .then(([data]) => {
+    .then(data => {
+        //NOTE: changed the above from ([data]) because it did not return the user's full queue.
         return data
     })
     .catch(err => {
