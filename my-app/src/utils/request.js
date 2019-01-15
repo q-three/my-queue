@@ -2,7 +2,6 @@
 import axios from 'axios'
 
 export const request = (url, method = 'get', body = null) => {
-        console.log('hitting request')
         return axios( process.env.REACT_APP_BASE_URL + url, {
             method,
             headers:{
