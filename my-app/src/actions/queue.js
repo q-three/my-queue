@@ -43,3 +43,19 @@ export function readItem(id){
     }catch(err){}
   }
 }
+
+export const ADD_ITEM = 'ADD_ITEM'
+export function addItem(item){
+  return async dispatch => {
+    console.log('ITEM HERE: ', item)
+    try{
+      const response = await request('/queue', 'post', item)
+      dispatch({
+        type: ADD_ITEM,
+        payload: response
+      })
+    } catch(err) {
+
+    }
+  }
+}
