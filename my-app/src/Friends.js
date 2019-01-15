@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import {Link} from 'react-router-dom'
 import {getFriends, getAllUsers, addFriend} from './actions/friends'
 import UserResult from './UserResult'
 import FriendListItem from './FriendListItem'
@@ -63,6 +64,7 @@ class Friends extends Component{
   render(){
     return (
       <div>
+        <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
         <header>
           <input 
             onFocus={this.handleFocus} 
@@ -78,6 +80,7 @@ class Friends extends Component{
           {this.props.friends.friends.length ? this.props.friends.friends.map((friend, i) => <FriendListItem key={i} {...friend}/>) : <p className="emptyState">You don't have any friends yet :(</p>}
         </main>
         {this.state.searching ? <div className="gradientScreen"></div> : null}
+        {this.state.searching ? <div className="closeButton" onClick={this.handleFocus}><i className="fa fa-close"></i></div> : null}
       </div>
     )
   }
