@@ -61,6 +61,22 @@ function starItem(id) {
     })
 } //updates queue item to be starred
 
+function readItem(id){
+    return getOne(id)
+    .then(result => {
+        return knex('q_items')
+        .where('id', id)
+        .update('read', true)
+        .returning('*')
+    })
+    .then(result => {
+        return result
+    })
+    .catch(err => {
+        throw err
+    })
+}
+
 function deleteItem(id){
     return knex('q_items')
     .where('id', id)
@@ -74,4 +90,4 @@ function deleteItem(id){
 } //deletes a queue item
 
 
-module.exports = {getAll, getOne, addQueueItem, starItem, deleteItem, checkUser}
+module.exports = {getAll, getOne, addQueueItem, starItem, readItem, deleteItem, checkUser}

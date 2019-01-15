@@ -68,6 +68,13 @@ function starItem(req,res,next) {
     .catch(next)
 } //updates queue item to be starred
 
+function readItem(req, res, next){
+    model.readItem(req.params.id)
+    .then(result => {
+        res.status(200).send(result)
+    })
+    .catch(next)
+}
 function deleteItem(req,res,next){
     model.deleteItem(req.params.id)
     .then(result => {
@@ -77,4 +84,4 @@ function deleteItem(req,res,next){
 } //deletes a queue item
 
 
-module.exports = {checkUser, getAll, getOne, addQueueItem, starItem, deleteItem, checkItem}
+module.exports = {checkUser, getAll, getOne, addQueueItem, starItem, readItem, deleteItem, checkItem}
