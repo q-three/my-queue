@@ -30,3 +30,16 @@ export function starItem(userId, itemId){
     }
   }
 }
+
+export const READ_ITEM = 'READ_ITEM'
+export function readItem(id){
+  return async dispatch => {
+    try{
+      const [response] = await request(`/queue/${id}/read`, 'put')
+      dispatch({
+        type: READ_ITEM,
+        payload: response
+      })
+    }catch(err){}
+  }
+}

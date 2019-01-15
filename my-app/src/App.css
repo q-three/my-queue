@@ -195,9 +195,7 @@ input, button[type="submit"]{
     margin-bottom:20px;
 }
 
-.queueItem a{
-    outline:1px solid red;
-}
+
 
 .cardWrapper{
     display:flex;
@@ -211,6 +209,20 @@ input, button[type="submit"]{
     width:33%;
     outline:1px solid #ccc;
     background-size:cover;
+    position:relative;
+}
+
+.cardImg a{
+    background-color:'black';
+    display:block;
+    padding-bottom:100%;
+    position:absolute;
+    width:100%;
+}
+
+.read{
+    opacity: 0.7;
+    transform: scale(.95)
 }
 
 .cardText{
