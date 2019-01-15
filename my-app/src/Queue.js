@@ -5,7 +5,13 @@ import { bindActionCreators } from 'redux';
 import {getQueue, starItem, readItem} from './actions/queue'
 
 class Queue extends Component{
-    
+    constructor(props){
+        super(props)
+        this.state = {
+            filteringBy: ''
+        }
+    }
+
     componentDidMount(){
         this.props.getQueue(this.props.auth.user.id)
     }
@@ -17,10 +23,15 @@ class Queue extends Component{
         return this.props.readItem(id)
     }
 
+    byType = (ele) => {
+
+        return ele.type.toLowerCase().includes(this.state.filteringBy.toLowerCase())
+    }
+
     render(){
         return(
             <div className="queue">
-                {this.props.queue.map((item, i) => <QueueItem starItem={() => this.starItem(item.id)} readItem={() => this.readItem(item.id)} key={i} {...item}/>)}
+                {this.props.queue.items.filter(this.byType).map((item, i) => <QueueItem starItem={() => this.starItem(item.id)} readItem={() => this.readItem(item.id)} key={i} {...item}/>)}
             </div>
         )
     }
