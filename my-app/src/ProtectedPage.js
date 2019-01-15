@@ -50,7 +50,9 @@ class ProtectedPage extends Component{
                 </div>
                 {this.state.filterOpen ? <FilterOptions handleClick={this.handleClick}/> : null}
                 <div className="button">
+                <Link to='/addItem'>
                     <i className="fa fa-plus"></i>
+                 </Link>
                 </div>
                 <Queue/>
             </div>
