@@ -1,11 +1,10 @@
 import {request} from '../utils/request'
 
 export const GET_FRIENDS = 'GET_FRIENDS'
-export function getFriends(payload){
-  console.log(payload)
+export function getFriends(id){
   return async dispatch => {
     try {
-      const response = await request(`/users/u/${payload.userId}/friends`, 'post', payload.friendId)
+      const response = await request(`/users/u/${id}/friends`, 'get')
       dispatch({
         type: GET_FRIENDS,
         payload:response
