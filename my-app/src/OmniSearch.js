@@ -45,8 +45,13 @@ class OmniSearch extends Component{
   }
 
   successReset = () => {
-    this.setState({
-      success: 'Item added!'
+    if(!this.state.success){
+      this.setState({
+        success: 'Item added!'
+      })
+    }
+    else this.setState({
+      success: false
     })
   }
 

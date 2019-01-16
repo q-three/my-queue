@@ -24,14 +24,18 @@ form, .actions{
     position:absolute;
     top:5vh;
 }
+
 input, label{
     display:block;
 }
 
-input, button[type="submit"]{
+#login input, #login button[type="submit"], #signup input, #signup button[type="submit"]{
     margin-bottom:20px;
     width:100%;
-    height:30px;
+    height:50px;
+    border: 1px solid #ccc;
+    border-radius:32px;
+    padding-left:10px;
 }
 
 .actions{
