@@ -1,11 +1,13 @@
 const axios = require('axios')
 
-function music(){
-  
+function music(URL){
+    return axios.get(URL)
+    .then(response => response)
+    .catch(err => err)
 }
 
-function video(url){
-  return axios.get(url)
+function video(URL){
+  return axios.get(URL)
   .then(response => response.data.results.slice(0, 5) )
   .catch(err => err)
 }

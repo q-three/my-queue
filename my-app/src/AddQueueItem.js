@@ -60,7 +60,6 @@ class AddQueueItem extends Component{
     render(){
         return(
             <div className="addQueueItem">
-                {console.log(this.state)}
                 <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
                 <form onSubmit={this.submit}>
                     <label htmlFor='friendSrch'>Add For: </label>

@@ -489,7 +489,6 @@ hr{
     width: calc(100% - 64px);
     min-height:50px;
     border:1px solid #ccc;
-    margin-top:-10px;
 }
 
 .searchItem{
@@ -543,4 +542,8 @@ select:focus, input:focus{
 
 hr{
     margin:20px 0;
+}
+
+.addQueueItem .warning{
+    width:100%;
 }
