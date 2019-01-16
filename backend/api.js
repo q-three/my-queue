@@ -1,6 +1,0 @@
-module.exports = {
-  tmdbKey: 'fd24ceef416df53a172903efcfbf359f',
-  tmdbAccessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZDI0Y2VlZjQxNmRmNTNhMTcyOTAzZWZjZmJmMzU5ZiIsInN1YiI6IjVjM2UyNWJlYzNhMzY4NTlmNTNmMTg5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NhnUXxCqJP-KYbWZG0MBA9AkYn8tM3kDUYeq7sO731I',
-  igdbKey: 'e51541e4cce94fa540865214035bac5b',
-  googleKey: 'AIzaSyCdgjfiPfdTA7XaS9dRvB4eEnePX3eh7Rk'
-}
