@@ -40,7 +40,6 @@ class Upload extends Component{
       <section className="upload">
         <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
         <form onSubmit={e => this.handleSubmit(e)}>
-
           <h3>Upload</h3>
           <hr/>
           <div className="fileUpload">
@@ -50,7 +49,6 @@ class Upload extends Component{
           <br/>
           <input type="submit" value="submit"/>
         </form>
-    
       </section>
     )
   }

@@ -90,5 +90,4 @@ function deleteItem(id){
     })
 } //deletes a queue item
 
-
 module.exports = {getAll, getOne, addQueueItem, starItem, readItem, deleteItem, checkUser}

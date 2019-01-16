@@ -13,7 +13,6 @@ function video(URL){
   .catch(err => err)
 }
 
-
 function games(URL){
   return axios({
     url:URL,

@@ -7,7 +7,6 @@ import SelectFriend from './SelectFriend'
 import {Link} from 'react-router-dom'
 import OmniSearch from './OmniSearch'
 
-
 class AddQueueItem extends Component{
     constructor(props){
         super(props)
@@ -56,7 +55,6 @@ class AddQueueItem extends Component{
         })
     }
 
-    
     render(){
         return(
             <div className="addQueueItem">

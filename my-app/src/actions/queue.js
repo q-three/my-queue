@@ -40,7 +40,9 @@ export function readItem(id){
         type: READ_ITEM,
         payload: response
       })
-    }catch(err){}
+    }catch(err){
+      console.error(err)
+    }
   }
 }
 
@@ -49,7 +51,6 @@ export function filter(val){
   return {
     type: FILTER,
     payload: val
-
   }
 }
 
@@ -62,6 +63,8 @@ export function addItem(body){
         type: ADD_ITEM,
         payload: response
       })
-    }catch(err){}
+    }catch(err){
+      console.error(err)
+    }
   }
 }
