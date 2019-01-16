@@ -9,21 +9,23 @@ class OmniSearch extends Component{
       type: '',
       query: '',
       error: '',
-      results: false
+      results: false,
+      success: false
     }
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      error: ''
+      error: '',
+      success: false
     })
 
     try{
       if(this.state.type === '') throw new Error('Select a category')
       return request(`/search/${this.state.type}`, 'post', {query: this.state.query})
       .then(response => {
-        console.log(response, '888888888888888888888888888888888888888888888')
+        console.log(response)
         this.setState({
           results: response
         })
@@ -42,11 +44,21 @@ class OmniSearch extends Component{
     })
   }
 
+  successReset = () => {
+    if(!this.state.success){
+      this.setState({
+        success: 'Item added!'
+      })
+    }
+    else this.setState({
+      success: false
+    })
+  }
+
   render() {
     return (
       <section>
         <div className="omniSearch">
-          {console.log(this.state)}
           <select name="type" className="omniSelect" onChange={(e) => this.handleChange(e)}>
             <option value="">Select category...</option>
             <option value="music">Music</option>
@@ -56,9 +68,10 @@ class OmniSearch extends Component{
           </select>
           <input name="query" type="text" className="omniInput" placeholder='search...' onChange={(e) => this.handleChange(e)}/>
         </div>
-        {this.state.results ? <SearchResults type={this.state.type} results={this.state.results}/> : null}
+        {this.state.results ? <SearchResults handleClick={this.handleClick} successReset={this.successReset} type={this.state.type} results={this.state.results}/> : null}
         {this.state.error === '' ? null : <div className="warning">{this.state.error}</div>}
         {this.state.results ? <div className="closeButton" onClick={this.handleClick}><i className="fa fa-close"></i></div> : null}
+        {this.state.success ? <div className="success">{this.state.success}</div> : null}
       </section>
     )
   }
