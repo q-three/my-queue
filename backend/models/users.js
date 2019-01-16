@@ -90,6 +90,7 @@ function getFriends(id){
                 delete x.password
                 delete x.l_name
                 delete x.f_name
+                delete x.color
                 return x
             })
         })
@@ -101,10 +102,13 @@ function editUser(id, edits){
     return knex('users')
     .where('id', id)
     .then(([user]) => {
-        let update = {'img': user.img, 'f_name': user.f_name, 'l_name': user.l_name} //maybe color scheme?
+        let update = {'img': user.img, 'f_name': user.f_name, 'l_name': user.l_name, 'color': user.color}
+        
         if(edits.img) update.img = edits.img
         if(edits.f_name) update.f_name = edits.f_name
         if(edits.l_name) update.l_name = edits.l_name
+        if(edits.color) update.color = edits.color
+
         return knex('users')
         .where('id', id)
         .update(update)
@@ -122,7 +126,8 @@ function getUserQueue(id){
     return knex('q_items')
     .innerJoin('users', 'users.id', 'referral_id')
     .where('user_id', id)
-    .select('q_items.desc as desc', 'q_items.img as img', 'q_items.id as id', 'q_items.read as read', 'q_items.starred as starred', 'q_items.url as url', 'q_items.type as type', 'users.f_name as referral_name') 
+    .select('q_items.desc as desc', 'q_items.img as img', 'q_items.id as id', 'q_items.read as read', 
+            'q_items.starred as starred', 'q_items.url as url', 'q_items.type as type', 'users.f_name as referral_name') 
     .then(data => {
         return data
     })

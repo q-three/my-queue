@@ -11,11 +11,9 @@ const bodyParser = require('body-parser')
 const formidable = require('express-formidable')
 ///////////////////////////////////////////////////////////////////////////////
 
-
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').load()
 }
-
 
 const app = express()
 const port = process.env.PORT || 8080
@@ -33,10 +31,8 @@ app.use('/auth', require('./routes/auth'))
 app.use('/users', require('./routes/users'))
 app.use('/queue', require('./routes/queue'))
 app.use('/search', require('./routes/search'))
-
 app.use(formidable())
 app.use('/upload', require('./routes/upload'))
-
 
 app.use((req, res, next) => {
     res.status(404).send({message: "Couldn't find it, bruh"})
@@ -48,5 +44,5 @@ app.use((err, req, res, next) => {
     res.status(status).send({message:err.message})
 })
 
-const listener = () => {console.log(`Getting down on port ${port}`)}
+const listener = () => {console.log(`Queueing on port ${port}`)}
 app.listen(port, listener)

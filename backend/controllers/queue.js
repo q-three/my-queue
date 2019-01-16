@@ -11,7 +11,6 @@ function checkUser(req,res,next){
     .catch(err => {
         next(err)
     })
-
 } //check that a user Exists, meant for the user a card is being made FOR, not the user who is creating it
 
 function checkItem(req,res,next){

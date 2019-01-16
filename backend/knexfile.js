@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const {projectName, dbName} = require('../project-details')
+const {dbName} = require('../project-details')
 
 module.exports = {
     development: {

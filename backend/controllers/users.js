@@ -69,6 +69,7 @@ function editUser(req,res,next){
     if(req.body.f_name ? edits.f_name = req.body.f_name : edits.f_name = null)
     if(req.body.l_name ? edits.l_name = req.body.l_name : edits.l_name = null)
     if(req.body.img ? edits.img = req.body.img : edits.img = null)
+    if(req.body.color ? edits.color = req.body.color : edits.color = null)
 
     model.editUser(id, edits)
     .then(result => {
