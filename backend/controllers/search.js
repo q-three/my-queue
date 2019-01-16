@@ -5,7 +5,6 @@ function music(req, res, next){
   const URL = `https://itunes.apple.com/search?term=${createQuery(req.body.query)}&entity=album&limit=5`
   return model.music(URL)
   .then(result => {
-    console.log(result)
     const sanitizedRes = result.data.results.map(ele => {
       return {
         img: ele.artworkUrl100,
@@ -39,24 +38,18 @@ function games(req, res, next){
   return model.games(URL)
   .then(response => {
     preImgRes = response
-    console.log(response)
-    const promiseArray = response.map(game => {
-      model.covers(`https://api-v3.igdb.com/covers/?filter[id][eq]=${game.cover}&fields=image_id`)
-    })
+    const promiseArray = response.map(game => model.covers(`https://api-v3.igdb.com/covers/?filter[id][eq]=${game.cover}&fields=image_id`))
     return Promise.all(promiseArray)
     .then(responses => {
-      console.log(responses)
       let sanitizedRes = preImgRes.map((ele, i) => {
-        ele.img = `https://images.igdb.com/igdb/image/upload/t_cover_small/${responses[i]}.jpg`
+        ele.img = `https://images.igdb.com/igdb/image/upload/t_cover_small/${responses[i][0].image_id}.jpg`
         ele.desc = ele.name
+        ele.title = ele.name
         return ele
       })
       res.status(200).send(sanitizedRes)      
     })
     .catch(err => err)
-    // img: https://images.igdb.com/igdb/image/upload/t_cover_small/${...}.jpg
-    
-    
   })
 
 }
@@ -65,7 +58,6 @@ function places(req, res, next){
   const URL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${createQuery(req.body.query)}&inputtype=textquery&fields=photos,name,formatted_address&locationbias=ipbias&key=${api.googleKey}`
   return model.places(URL)
   .then(response => {
-    console.log(response)
     const sanitizedRes = response.map(ele => {
       return {
         img: `https://maps.googleapis.com/maps/api/place/photo?maxheight=100&photoreference=${ele.photos[0].photo_reference}&key=${api.googleKey}`,

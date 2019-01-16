@@ -38,7 +38,9 @@ function covers(URL){
     },
     // data: 'fields image_id;'
   })
-    .then(response => response.data)
+    .then(response => {
+      return response.data
+    })
     .catch(err => err)
 }
 
