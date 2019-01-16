@@ -39,6 +39,10 @@ input{
     font-size:14px;
 }
 
+input[type="submit"]{
+    padding-left:0px;
+}
+
 select:focus, input:focus{
     outline:none;
     border: 1px solid #dd2956;
@@ -98,6 +102,11 @@ select:focus, input:focus{
     line-height:40px;
 }
 
+.queueItem a{
+    text-decoration:none;
+    color:inherit;
+}
+
 .logout:hover{
     opacity:0.8;
     cursor:pointer;
@@ -112,7 +121,11 @@ select:focus, input:focus{
     height:200px;
     background-color:#ccc;
     position:relative;
-    
+}
+
+.home footer{
+    height:100px;
+    background-color:#f0f0f0;
 }
 
 .greeting{
@@ -241,11 +254,35 @@ select:focus, input:focus{
     width:63%
 }
 
-.queueItem i{
-    position: absolute;
-    top:10px;
-    right:10px;
+/* 
+#1c3341 
+#008773
+#6BB983
+#F2C975
+#ED6353
+*/
+
+.itemHeader{
+    display:flex;
+    margin-top:10px;
 }
+
+.itemHeader div{
+    height:16px;
+    width:100%;
+}
+
+.itemHeader .game{
+    background-color:#008773;
+}
+.game i.fa-star-o, .game i.fa-star{
+    color:#008773
+}
+
+.itemHeader i{
+    padding:0 5px;
+}
+
 
 .rec{
     font-size:12px;
