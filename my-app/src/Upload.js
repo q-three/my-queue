@@ -37,7 +37,7 @@ class Upload extends Component{
 
   render(){
     return (
-      <section>
+      <section className="upload">
         <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
         <form onSubmit={e => this.handleSubmit(e)}>
 

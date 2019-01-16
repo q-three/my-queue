@@ -1,5 +1,4 @@
 import { SET_AUTHENTICATION, LOG_IN, LOG_OUT, SIGN_UP , EDIT_PROFILE, UPLOAD_IMAGE } from '../actions/auth'
-// import { request } from 'util';
 
 const initialState  = {
     pending: true,
