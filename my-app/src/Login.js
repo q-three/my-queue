@@ -44,14 +44,12 @@ class Login extends Component{
         return(
             <div className="login">
                 <form id="login" onSubmit={(e) => this.handleSubmit(e)}>
-                    <label htmlFor="username">username:</label>
-                    <input id="username" type="text" required onChange={(e) => this.handleChange(e)}/>
-                    <label htmlFor="password">password:</label>
-                    <input id="password" type="password" minLength="8" required onChange={(e) => this.handleChange(e)}/>
-                    <button id="submit" type="submit" disabled={
+                    <input id="username" type="text" placeholder="username" required onChange={(e) => this.handleChange(e)}/>
+                    <input id="password" type="password" placeholder="password" minLength="8" required onChange={(e) => this.handleChange(e)}/>
+                    <input value="submit" id="submit" type="submit" disabled={
                         (this.state.username.length > 1 && this.state.password.length >= 8) 
                         ? false 
-                        : true}>submit</button>
+                        : true}/>
                 </form>
                 <p className="actions">Not a member? <Link to='/signup'>Signup</Link></p>
                {this.props.auth.error ? <div className="warning">{this.props.auth.error}</div> : null}

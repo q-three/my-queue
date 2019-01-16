@@ -55,6 +55,7 @@ class ProtectedPage extends Component{
                  </Link>
                 </div>
                 <Queue/>
+                <footer></footer>
             </div>
         )
     }

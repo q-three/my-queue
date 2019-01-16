@@ -54,18 +54,13 @@ class Signup extends Component{
         return (
             <div className="signup">
                 <form id="signup" onSubmit={(e) => this.handleSubmit(e)}>
-                    <label htmlFor="f_name">first name:</label>
-                    <input id="f_name" type="text" maxLength="50" required onChange={(e) => this.handleChange(e)}/>
-                    <label htmlFor="l_name">last name:</label>
-                    <input id="l_name" type="text" maxLength="50" required onChange={(e) => this.handleChange(e)}/>
-                    <label htmlFor="username">username:</label>
-                    <input id="username" type="text" required onChange={(e) => this.handleChange(e)}/>
-                    <label htmlFor="password">password:</label>
-                    <input id="password" type="password" minLength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required onChange={(e) => this.handleChange(e)}/>
-                    <label htmlFor="passwordMatch">retype password:</label>
-                    <input id="passwordMatch" type="password" minLength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    <input id="f_name" type="text" placeholder="first name" maxLength="50" required onChange={(e) => this.handleChange(e)}/>
+                    <input id="l_name" type="text" placeholder="last name" maxLength="50" required onChange={(e) => this.handleChange(e)}/>
+                    <input id="username" type="text" placeholder="username" required onChange={(e) => this.handleChange(e)}/>
+                    <input id="password" type="password" placeholder="password" minLength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required onChange={(e) => this.handleChange(e)}/>
+                    <input id="passwordMatch" type="password" placeholder="retype password" minLength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         required onChange={(e) => this.handleChange(e)}/>
-                    <button id="submit" type="submit" disabled={this.checkVals() ? false : true} >submit</button>
+                    <input value="submit" id="submit" type="submit" disabled={this.checkVals() ? false : true} />
                     {this.state.password !== this.state.passwordMatch 
                         ? <span className="passwordWarning">Passwords do not match</span>
                         : ''
