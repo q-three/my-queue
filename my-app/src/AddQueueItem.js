@@ -75,8 +75,9 @@ class AddQueueItem extends Component{
                 <hr/>
 
                  <p>Didn't find what you were looking for? <br/>Add your own.</p>
-                <label htmlFor='typeSelect'>Category</label>    
-                <select name='typeSelect' className="selectSearch" onChange={this.selectType}>
+                {/* <label htmlFor='typeSelect'>Category</label>     */}
+                <select name='typeSelect' className="selectSearch" placeholder="category" onChange={this.selectType}>
+                    <option value="">Category</option>
                     <option value='music'>Music</option>
                     <option value='video'>Video</option>
                     <option value='games'>Games</option>
@@ -85,10 +86,10 @@ class AddQueueItem extends Component{
                 </select>   
                 <br/><br/>
 
-                <label htmlFor='desc'>Description</label>    
-                <input className='inputBox' type='text' name='desc' value={this.state.desc} onChange={this.handleChange}></input>
-                <label htmlFor='url'>URL</label>   
-                <input className='inputBox' type='text' name='url' value={this.state.url} onChange={this.handleChange}></input>
+                {/* <label htmlFor='desc'>Description</label>     */}
+                <input className='inputBox' type='text' placeholder="description" name='desc' value={this.state.desc} onChange={this.handleChange}></input>
+                {/* <label htmlFor='url'>URL</label>    */}
+                <input className='inputBox' type='text' placeholder="URL" name='url' value={this.state.url} onChange={this.handleChange}></input>
                 <br/><br/>
                 <input type='submit' className='btn'></input>
                 </form>
@@ -97,7 +98,6 @@ class AddQueueItem extends Component{
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {

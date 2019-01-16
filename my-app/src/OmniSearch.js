@@ -25,15 +25,16 @@ class OmniSearch extends Component{
       if(this.state.type === '') throw new Error('Select a category')
       return request(`/search/${this.state.type}`, 'post', {query: this.state.query})
       .then(response => {
-        console.log(response)
         this.setState({
           results: response
         })
       })
     }catch(err){
-      this.setState({
-        error:'Select a category'
-      })
+      if(e.target.name === 'query'){
+        this.setState({
+          error:'Select a category'
+        })
+      }
     }
   }
 
@@ -57,10 +58,10 @@ class OmniSearch extends Component{
 
   render() {
     return (
-      <section>
+      <section className="omniSearchHolder">
         <div className="omniSearch">
           <select name="type" className="omniSelect" onChange={(e) => this.handleChange(e)}>
-            <option value="">Select category...</option>
+            <option value="">category</option>
             <option value="music">Music</option>
             <option value="video">Video</option>
             <option value="games">Games</option>

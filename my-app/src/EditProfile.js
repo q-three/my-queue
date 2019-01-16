@@ -37,8 +37,11 @@ class EditProfile extends Component{
                     <h3>Edit Profile</h3>
                     <input type="text" name="f_name" placeholder={this.props.auth.user.f_name} required onChange={e => this.handleChange(e)}/>
                     <input type="text" name="l_name" placeholder={this.props.auth.user.l_name} required onChange={e => this.handleChange(e)}/>
-                    <input type="url" name="img" placeholder={this.props.auth.user.img || 'add image url'} onChange={e => this.handleChange(e)}/>
-                    <button>Submit</button>
+                    <div className="imageInput">
+                        <input type="url" name="img" placeholder={this.props.auth.user.img || 'add image url'} onChange={e => this.handleChange(e)}/>
+                        <Link to='/upload'><button className="uploadImage">Upload</button></Link>
+                    </div>
+                    <input type="submit"value="submit" />
                 </form>
             </div>
         )

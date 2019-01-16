@@ -2,6 +2,6 @@ const express = require('express')
 const router = express.Router()
 const ctrl = require('../controllers/upload')
 
-router.post('/', ctrl.addImage)
+router.post('/:id', ctrl.addImage)
 
 module.exports = router

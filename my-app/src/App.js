@@ -12,6 +12,7 @@ import {setAuthentication} from './actions/auth'
 import EditProfile from './EditProfile'
 import Friends from './Friends'
 import AddQueueItem from './AddQueueItem'
+import Upload from './Upload'
 
 class App extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class App extends Component {
           <AuthenticatedRoute path='/edit-profile' component={EditProfile}/>
           <AuthenticatedRoute path='/friends' component={Friends}/>
           <AuthenticatedRoute path='/addItem' component={AddQueueItem}/>
+          <AuthenticatedRoute path='/upload' component={Upload}/>
           <Route path='/signup' component={Signup} />
           <Route path='/login' component={Login}/>
           <Route path='/' component={Login}/>

@@ -3,6 +3,7 @@
     padding:0;
     box-sizing:border-box;
 }
+
 .hidden{
     visibility: hidden;
 }
@@ -15,27 +16,32 @@ form, .actions{
     padding:20px;
     margin:15vh auto 0;
 }
-
+/* 
 .icon{
-    
     height:50px;
     width:50px;
     left:calc(25% - 20px);
     position:absolute;
     top:5vh;
-}
+} */
 
 input, label{
     display:block;
 }
 
-#login input, #login button[type="submit"], #signup input, #signup button[type="submit"]{
+input{
     margin-bottom:20px;
     width:100%;
     height:50px;
     border: 1px solid #ccc;
     border-radius:32px;
-    padding-left:10px;
+    padding-left: 20px;
+    font-size:14px;
+}
+
+select:focus, input:focus{
+    outline:none;
+    border: 1px solid #dd2956;
 }
 
 .actions{
@@ -50,19 +56,13 @@ input, label{
     border-radius:5px;
     color: #dd2956;
     background-color: #dd295650;
+    animation: zoomIn .25s ease-in;
 }
 
 .success {
     border:1px solid #29dd56;
     color:#29dd56;
     background-color:#29dd5650;
-}
-.protectedPage{
-    width:75%;
-    border:1px solid #ccc;
-    border-radius:5px;
-    padding:20px;
-    margin:10vh auto;
 }
 
 .loading{
@@ -74,6 +74,7 @@ input, label{
     margin:50px auto;
     animation: rotate 1s ease-in-out infinite;
 }
+
 @keyframes rotate{
     0%{transform:rotate(0deg)}
     100%{transform:rotate(360deg)}
@@ -89,12 +90,12 @@ input, label{
     justify-content:space-between;
     flex-direction: row-reverse;
 }
+
 .logout{
     text-decoration:underline;
     color:white;
     height:40px;
     line-height:40px;
-    
 }
 
 .logout:hover{
@@ -111,6 +112,7 @@ input, label{
     height:200px;
     background-color:#ccc;
     position:relative;
+    
 }
 
 .greeting{
@@ -163,13 +165,6 @@ input, label{
     color:white;
 }
 
-.button img{
-    height:30px;
-    width:30px;
-    position:block;
-    margin:10px;
-}
-
 .button:nth-of-type(1) i{
     font-size:30px;
 }
@@ -185,7 +180,6 @@ input, label{
 }
 
 /*===========Queue Card============*/
-
 .queue{
     padding:10px;
 }
@@ -198,7 +192,6 @@ input, label{
     z-index:9;
     margin-bottom:20px;
 }
-
 
 
 .cardWrapper{
@@ -329,6 +322,50 @@ input, label{
     color:#333;
 }
 
+.imageInput{
+    display:flex;
+}
+
+.imageInput input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.imageInput button{
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    height:50px;
+    background-color: white;
+    border:1px solid #ccc;
+    border-left:none;
+    width:75px;
+    color:#999;
+}
+
+
+.fileUpload{
+    height:50px;
+    position:relative;
+}
+
+.fakeButton{
+    position:absolute;
+    top:0;
+    width:100%;
+    height:50px;
+    border-radius:32px;
+    border:1px solid #ccc;
+    line-height:50px;
+    padding-left:10px;
+    color:#999;
+    background-color:white;
+}
+
+.fileUpload input{
+    position:relative;
+    z-index:99;
+    opacity:0;
+}
 /*===========Friends============*/
 .friendSearch{
     height:50px;
@@ -368,7 +405,7 @@ input, label{
 
 @keyframes slideDown{
     0%{height:0px}
-    100%{height:200px}
+    100%{height:350px}
 }
 
 .userResult{
@@ -399,17 +436,7 @@ input, label{
     margin: 10px;
 }
 
-.inputBox{
-    height:40px;
-    margin:10px 10px 0;
-    width: calc(100% - 20px);
-    border-radius: 32px;
-    border:1px solid #ccc;
-    font-size:14px;
-    padding-left:20px;
-    position: relative;
-    z-index:99;
-}
+
 
 input:focus{
     border:1px solid #dd2956;
@@ -473,10 +500,15 @@ hr{
 .omniSearch input{
     border-top-right-radius: 32px;
     border-bottom-right-radius:32px;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    border-left:none !important;
     height:50px;
     width:60%;
     border:1px solid #ccc;
     padding-left:10px;
+    font-size:18px;
+    color:#aaa;
 }
 
 .omniSearch select{
@@ -491,20 +523,22 @@ hr{
 
 .searchResults{
     width: calc(100% - 64px);
-    min-height:50px;
+    height:350px;
+    overflow-y:scroll;
     border:1px solid #ccc;
 }
 
 .searchItem{
     display:flex;
     padding:5px 0;
+    height:110px;
     border-bottom:1px solid #ccc;
 }
 
 .searchItem img{
     position:absolute;
-    height:100px;
-    clip:rect(0px, 100px, 100px, 0px);
+    max-height:100px;
+    /* clip:rect(0px, 100px, 100px, 0px); */
 }
 
 .searchItem h3{
@@ -512,8 +546,12 @@ hr{
     margin:25px 0 0 110px;
 }
 
+.omniSearchHolder .closeButton{
+    top:245px;
+    right:30px;
+}
 /*===========Add Queue Item============*/
-.addQueueItem form{
+.addQueueItem form, .editProfile form, .upload form{
     width:100%;
     border:none;
     margin-top:50px;
@@ -536,22 +574,18 @@ select{
     width:calc(100% - 10px);
 }
 
-.addQueueItem input{
-    height:50px;
-    /* width:calc(100% - 10px); */   
-}
-
-select:focus, input:focus{
-    outline:none;
-    border: 1px solid #dd2956;
-}
-
 hr{
     margin:20px 0;
 }
 
 .addQueueItem .warning{
     width:100%;
+    animation: zoomIn .25s ease-in;
+}
+
+@keyframes zoomIn{
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
 }
 
 @keyframes grow{
