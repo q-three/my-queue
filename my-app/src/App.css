@@ -498,12 +498,14 @@ hr{
 }
 
 .searchItem img{
-    margin-right:10px;
+    position:absolute;
+    height:100px;
+    clip:rect(0px, 100px, 100px, 0px);
 }
 
 .searchItem h3{
     height:50px;
-    margin-top:25px;
+    margin:25px 0 0 110px;
 }
 
 /*===========Add Queue Item============*/

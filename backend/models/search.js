@@ -12,4 +12,14 @@ function video(URL){
   .catch(err => err)
 }
 
-module.exports = {music, video}
+
+function games(URL){
+  
+}
+
+function places(URL){
+  return axios.get(URL)
+  .then(response => response.data.candidates)
+  .catch(err => err)
+}
+module.exports = {music, video, games, places}
