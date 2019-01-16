@@ -26,9 +26,10 @@ class ProtectedPage extends Component{
     }
 
     render(){
+        const user = this.props.auth.user
         return(
             <div className="home">
-                <header>
+                <header style={{backgroundColor: `${user.color ? user.color : '#ccc' }`}}>
                     <div className='accountActions'>
                         <Link to='/edit-profile'>
                             <i className="fa fa-cog"></i>
@@ -36,8 +37,12 @@ class ProtectedPage extends Component{
                         <p className='logout' onClick={this.handleLogOut}>Log Out</p>
                     </div>
                     <div className="greeting">
-                        <div className="letter" style={{ backgroundImage: `url("${this.props.auth.user.img}")` }}>{this.props.auth.user.img ? null : this.props.auth.user.f_name[0].toUpperCase()}</div>
-                        <p>Welcome, {this.props.auth.user.f_name}.</p>    
+                        <div className="letter" 
+                            style={{ 
+                                backgroundImage: `url("${user.img}")`, 
+                                borderColor: `${user.color ? user.color : '#ccc'}` 
+                            }}>{user.img ? null : user.f_name[0].toUpperCase()}</div>
+                        <p>Welcome, {user.f_name}.</p>    
                     </div>
                 </header>
                 <div className="button">

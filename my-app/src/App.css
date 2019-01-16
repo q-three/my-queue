@@ -28,7 +28,11 @@ input{
     border: 1px solid #ccc;
     border-radius:32px;
     padding-left: 20px;
-    font-size:14px;
+    font-size:16px;
+}
+
+select{
+    font-size:16px;
 }
 
 input[type="submit"]{
@@ -115,6 +119,11 @@ select:focus, input:focus{
     position:relative;
 }
 
+header{
+    height:55px;
+    background-color:#ccc;
+}
+
 .home footer{
     height:100px;
     background-color:#f0f0f0;
@@ -190,7 +199,7 @@ select:focus, input:focus{
 }
 
 .queueItem{
-    border:1px solid #ccc;
+    border:2px solid #ccc;
     border-radius:5px;
     position:relative;
     background-color:white;
@@ -212,20 +221,18 @@ select:focus, input:focus{
     background-size:cover;
     position:relative;
 }
+
 .cardImg i{
     position:absolute;
     font-size:50px;
     text-align:center;
     width:100%;
-    
-    margin:0;
-    padding:0;
     left:0;
     height:100%;
     top:0;
-    height:50px;
-    top:30%;
-    padding-top:20%;
+    height:100px;
+    color:#333;
+    line-height:100px;
 }
 
 .cardImg a{
@@ -238,20 +245,11 @@ select:focus, input:focus{
 
 .read{
     opacity: 0.7;
-    transform: scale(.95)
 }
 
 .cardText{
     width:63%
 }
-
-/* 
-#1c3341 
-#008773
-#6BB983
-#F2C975
-#ED6353
-*/
 
 .itemHeader{
     display:flex;
@@ -263,12 +261,62 @@ select:focus, input:focus{
     width:100%;
 }
 
+/* Styling Game Cards */
 .itemHeader .game{
     background-color:#008773;
 }
 .game i.fa-star-o, .game i.fa-star{
     color:#008773
 }
+.itemHeader.game{
+    border-right:10px solid #008773
+}
+
+/*Styling Link Cards */
+.itemHeader .link{
+    background-color:#1C3341
+}
+.link i.fa-star-o, .link i.fa-star{
+    color:#1C3341
+}
+.itemHeader.link{
+    border-right:10px solid #1C3341
+}
+
+/* Styling Music Cards */
+.itemHeader .music{
+    background-color:#ED6353
+}
+.music i.fa-star-o, .music i.fa-star{
+    color:#ED6353
+}
+.itemHeader.music{
+    border-right:10px solid #ED6353
+}
+
+
+/* Styling Place Cards */
+.itemHeader .places{
+    background-color:#F2C975
+}
+.places i.fa-star-o, .places i.fa-star{
+    color:#F2C975
+}
+.itemHeader.places{
+    border-right:10px solid #F2C975
+}
+
+/* Styling Video Cards */
+.itemHeader .places{
+    background-color:#6BB983
+}
+.places i.fa-star-o, .places i.fa-star{
+    color:#6BB983
+}
+.itemHeader.places{
+    border-right:10px solid #6BB983
+}
+
 
 .itemHeader i{
     padding:0 5px;
@@ -346,7 +394,7 @@ select:focus, input:focus{
     position:absolute;
     top:10px;
     left:10px;
-    color:#333;
+    color:white;
 }
 
 .imageInput{
@@ -531,7 +579,6 @@ hr{
     width:60%;
     border:1px solid #ccc;
     padding-left:10px;
-    font-size:18px;
     color:#aaa;
 }
 
