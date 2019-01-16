@@ -64,7 +64,8 @@ class Friends extends Component{
   render(){
     return (
       <div>
-        <header>
+        <header style={{
+          backgroundColor: `${this.props.auth.user.color ? this.props.auth.user.color : '#ccc'}`}}>
           <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
         </header>
           <input 

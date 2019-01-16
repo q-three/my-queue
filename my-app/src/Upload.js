@@ -23,7 +23,6 @@ class Upload extends Component{
       }
     })
     .then(response => {
-      console.log(response)
       this.props.uploadImage(response.data[0])
       this.props.history.push('/home')
     })
@@ -38,7 +37,9 @@ class Upload extends Component{
   render(){
     return (
       <section className="upload">
-        <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
+        <header style={{ backgroundColor: `${this.props.auth.user.color ? this.props.auth.user.color : '#ccc'}` }}>
+          <Link className="backButton" to='/edit-profile'><i className="fa fa-arrow-left"></i></Link>
+        </header>
         <form onSubmit={e => this.handleSubmit(e)}>
 
           <h3>Upload</h3>
