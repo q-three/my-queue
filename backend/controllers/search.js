@@ -1,5 +1,5 @@
 const model = require('../models/search')
-const api = require('../api')
+// const api = require('../api')
 
 function music(req, res, next){
   const URL = `https://itunes.apple.com/search?term=${createQuery(req.body.query)}&entity=album&limit=5`

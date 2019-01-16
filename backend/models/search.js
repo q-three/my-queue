@@ -1,5 +1,5 @@
 const axios = require('axios')
-const api = require('../api')
+// const api = require('../api')
 
 function music(URL){
     return axios.get(URL)
