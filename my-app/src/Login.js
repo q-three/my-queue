@@ -35,9 +35,6 @@ class Login extends Component{
             .catch(err => {
                 this.props.logIn(err)
             })
-            
-        
-        
         }
 
     render(){
@@ -54,8 +51,7 @@ class Login extends Component{
                 <p className="actions">Not a member? <Link to='/signup'>Signup</Link></p>
                {this.props.auth.error ? <div className="warning">{this.props.auth.error}</div> : null}
                 {this.props.auth.success ? <div className="success">{this.props.auth.success}</div> : null} 
-            </div>
-            
+            </div> 
         )
     }
 }

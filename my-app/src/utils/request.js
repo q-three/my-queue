@@ -1,4 +1,3 @@
-// import React from 'react'
 import axios from 'axios'
 
 export const request = (url, method = 'get', body = null) => {

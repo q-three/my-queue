@@ -6,7 +6,6 @@ import {signup} from './actions/auth'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
-
 class Signup extends Component{
     constructor(props){
         super(props)
@@ -65,7 +64,6 @@ class Signup extends Component{
                         ? <span className="passwordWarning">Passwords do not match</span>
                         : ''
                     }
-
                 </form>
                 <p className="actions">Already a member? <Link to='/login'>Login</Link></p>
                 {this.props.auth.error ? <div className="warning">{this.props.auth.error}</div> : null}

@@ -16,14 +16,6 @@ form, .actions{
     padding:20px;
     margin:15vh auto 0;
 }
-/* 
-.icon{
-    height:50px;
-    width:50px;
-    left:calc(25% - 20px);
-    position:absolute;
-    top:5vh;
-} */
 
 input, label{
     display:block;
@@ -206,7 +198,6 @@ select:focus, input:focus{
     margin-bottom:20px;
 }
 
-
 .cardWrapper{
     display:flex;
     padding:10px;
@@ -282,7 +273,6 @@ select:focus, input:focus{
 .itemHeader i{
     padding:0 5px;
 }
-
 
 .rec{
     font-size:12px;
@@ -379,7 +369,6 @@ select:focus, input:focus{
     color:#999;
 }
 
-
 .fileUpload{
     height:50px;
     position:relative;
@@ -472,8 +461,6 @@ select:focus, input:focus{
 .emptyState{
     margin: 10px;
 }
-
-
 
 input:focus{
     border:1px solid #dd2956;

@@ -58,7 +58,6 @@ class Friends extends Component{
   addFriend = (id) => {
     return this.props.addFriend({userId: this.props.auth.user.id, friendId:id})
     .then(this.props.getFriends(this.props.auth.user.id))
-     
   }
 
   render(){

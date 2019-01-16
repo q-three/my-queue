@@ -1,6 +1,5 @@
 import {GET_QUEUE, STAR_ITEM, READ_ITEM, FILTER, ADD_ITEM} from '../actions/queue'
 
-
 const initialState = {
   items: [],
   filter: '',

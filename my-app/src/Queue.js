@@ -6,7 +6,6 @@ import {getQueue, starItem, readItem} from './actions/queue'
 
 class Queue extends Component{
 
-
     componentDidMount(){
         this.props.getQueue(this.props.auth.user.id)
     }

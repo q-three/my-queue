@@ -82,7 +82,6 @@ function getFriends(id){
         .where('user_id', id)
         .then((data)=> {
             const friendsArray = data.map(connection => connection.friend_id)
-            // console.log('User-Models-getfriends()', friendsArray)
             return knex('users')
             .whereIn('id', friendsArray)
         })
@@ -117,7 +116,6 @@ function editUser(id, edits){
             throw err
         })
     })
-    
 } //edit user's profile
 
 function getUserQueue(id){
@@ -125,15 +123,12 @@ function getUserQueue(id){
     .innerJoin('users', 'users.id', 'referral_id')
     .where('user_id', id)
     .select('q_items.desc as desc', 'q_items.img as img', 'q_items.id as id', 'q_items.read as read', 'q_items.starred as starred', 'q_items.url as url', 'q_items.type as type', 'users.f_name as referral_name') 
-    //added inner join and select to have cards display 'recommended by, user's first name'
     .then(data => {
-        //NOTE: changed the above from ([data]) because it did not return the user's full queue.
         return data
     })
     .catch(err => {
         throw err
     })
 } //get list of queue items for a specific user
-
 
 module.exports = {signup, getAll, getUser, addFriend, getFriends, editUser, getUserQueue, checkFriends}
