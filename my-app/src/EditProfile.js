@@ -32,9 +32,12 @@ class EditProfile extends Component{
     render(){
         return (
             <div className="editProfile">
-                <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
+                <header>
+                    <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
+                </header>
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <h3>Edit Profile</h3>
+                    <hr/>
                     <input type="text" name="f_name" placeholder={this.props.auth.user.f_name} required onChange={e => this.handleChange(e)}/>
                     <input type="text" name="l_name" placeholder={this.props.auth.user.l_name} required onChange={e => this.handleChange(e)}/>
                     <div className="imageInput">

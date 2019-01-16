@@ -64,8 +64,9 @@ class Friends extends Component{
   render(){
     return (
       <div>
-        <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
         <header>
+          <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
+        </header>
           <input 
             onFocus={this.handleFocus} 
             onChange={e => this.handleChange(e)}
@@ -74,7 +75,6 @@ class Friends extends Component{
             placeholder="search for friends..."
           />
           {this.state.searching ? <div className="searchResults">{this.props.friends.users.filter(this.byFriends).filter(this.byQuery).map((user, i) => <UserResult addFriend={() => this.addFriend(user.id)} key={i} {...user}/>)}</div> : null}
-        </header>
         <hr/>
         <main className="friendsList"> 
           {this.props.friends.friends.length ? this.props.friends.friends.map((friend, i) => <FriendListItem key={i} {...friend}/>) : <p className="emptyState">You don't have any friends yet :(</p>}

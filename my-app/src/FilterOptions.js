@@ -35,22 +35,22 @@ class FilterOptions extends Component{
     return(
       <Fragment>
         <div className={`filterButtons ${this.state.slideOpen ? 'slideOpen' : 'slideClose'}`} onClick={e => this.slideIn(e)}>
-          <div className={`filterButton ${ this.props.queue.filter === 'starred' ? 'selected' : null}`} data-name="starred" onClick={() => this.handleClick('starred')}>
+          <div className="filterButton" style={{backgroundColor: `${this.props.queue.filter === 'starred' ? '#F8B32B' : null}`}} data-name="starred" onClick={() => this.handleClick('starred')}>
             <i className="fa fa-star"></i>
           </div>
-          <div className={`filterButton ${this.props.queue.filter === 'music' ? 'selected' : null}`} data-name="music" onClick={() => this.handleClick('music')}>
+          <div className="filterButton" style={{ backgroundColor: `${this.props.queue.filter === 'music' ? '#ED6353' : null}` }} data-name="music" onClick={() => this.handleClick('music')}>
             <i className="fa fa-music"></i>
           </div>
-          <div className={`filterButton ${this.props.queue.filter === 'video' ? 'selected' : null}`} data-name="video" onClick={() => this.handleClick('video')}>
+          <div className="filterButton" style={{ backgroundColor: `${this.props.queue.filter === 'video' ? '#6BB983' : null}` }} data-name="video" onClick={() => this.handleClick('video')}>
             <i className="fa fa-tv"></i>
           </div>
-          <div className={`filterButton ${this.props.queue.filter === 'games' ? 'selected' : null}`} data-name="games" onClick={() => this.handleClick('games')}>
+          <div className="filterButton" style={{ backgroundColor: `${this.props.queue.filter === 'games' ? '#008773' : null}` }} data-name="games" onClick={() => this.handleClick('games')}>
             <i className="fa fa-gamepad"></i>
           </div>
-          <div className={`filterButton ${this.props.queue.filter === 'places' ? 'selected' : null}`} data-name="places" onClick={() => this.handleClick('places')}>
+          <div className="filterButton" style={{ backgroundColor: `${this.props.queue.filter === 'places' ? '#F2C975' : null}` }} data-name="places" onClick={() => this.handleClick('places')}>
             <i className="fa fa-map-marker"></i>
           </div>
-          <div className={`filterButton ${this.props.queue.filter === 'links' ? 'selected' : null}`} data-name="links" onClick={() => this.handleClick('links')}>
+          <div className="filterButton" style={{ backgroundColor: `${this.props.queue.filter === 'links' ? '#1C3341' : null}` }} data-name="links" onClick={() => this.handleClick('links')}>
             <i className="fa fa-link"></i>
           </div>
         </div>
