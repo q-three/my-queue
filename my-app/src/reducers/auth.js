@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATION, LOG_IN, LOG_OUT, SIGN_UP , EDIT_PROFILE} from '../actions/auth'
+import { SET_AUTHENTICATION, LOG_IN, LOG_OUT, SIGN_UP , EDIT_PROFILE, UPLOAD_IMAGE } from '../actions/auth'
 // import { request } from 'util';
 
 const initialState  = {
@@ -35,7 +35,9 @@ export default function auth(state=initialState, {type, payload}){
                 return { ...state, pending: false, success: null, error: payload.response.data.message }
             }
             return { ...state, pending: false, error: null, user: payload }
-        default:
+        case UPLOAD_IMAGE:
+            return {...state, user: payload}
+            default:
             return state
     }
 }

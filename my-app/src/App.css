@@ -29,7 +29,8 @@ input, label{
     display:block;
 }
 
-#login input, #login button[type="submit"], #signup input, #signup button[type="submit"]{
+/* input, button[type="submit"], #signup input, #signup button[type="submit"]{ */
+input{
     margin-bottom:20px;
     width:100%;
     height:50px;
@@ -57,6 +58,7 @@ input, label{
     color:#29dd56;
     background-color:#29dd5650;
 }
+
 .protectedPage{
     width:75%;
     border:1px solid #ccc;
@@ -329,6 +331,50 @@ input, label{
     color:#333;
 }
 
+.imageInput{
+    display:flex;
+}
+
+.imageInput input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.imageInput button{
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    height:50px;
+    background-color: white;
+    border:1px solid #ccc;
+    border-left:none;
+    width:75px;
+    color:#999;
+}
+
+
+.fileUpload{
+    height:50px;
+    position:relative;
+}
+
+.fakeButton{
+    position:absolute;
+    top:0;
+    width:100%;
+    height:50px;
+    border-radius:32px;
+    border:1px solid #ccc;
+    line-height:50px;
+    padding-left:10px;
+    color:#999;
+    background-color:white;
+}
+
+.fileUpload input{
+    position:relative;
+    z-index:99;
+    opacity:0;
+}
 /*===========Friends============*/
 .friendSearch{
     height:50px;
