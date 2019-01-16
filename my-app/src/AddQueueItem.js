@@ -58,7 +58,7 @@ class AddQueueItem extends Component{
     render(){
         return(
             <div className="addQueueItem">
-                <header>
+                <header style={{backgroundColor: `${this.props.auth.user.color ? this.props.auth.user.color : '#ccc'}`}}>
                     <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
                 </header>
                 <form onSubmit={this.submit}>

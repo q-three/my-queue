@@ -12,27 +12,34 @@ class EditProfile extends Component{
             f_name: '',
             l_name: '',
             img: '',
+            color: '',
             error: false, 
         }
     }
     
-    handleChange(e){
+    handleChange = (e) =>{
+        console.log('firing')
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault()
-        const {id, f_name, l_name, img} = this.state
-        this.props.editProfile({id, f_name, l_name, img})
+        const {id, f_name, l_name, img, color} = this.state
+        const body = {id, f_name, l_name}
+        if(color) body.color = color
+        if(img) body.img = img
+        this.props.editProfile(body)
         this.props.history.push('/home')
     }
-    
+
     render(){
         return (
             <div className="editProfile">
-                <header>
+                {console.log(this.state)}
+                <header style={{
+                    backgroundColor: `${this.props.auth.user.color ? this.props.auth.user.color : '#ccc'}`}}>
                     <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
                 </header>
                 <form onSubmit={e => this.handleSubmit(e)}>
@@ -44,7 +51,14 @@ class EditProfile extends Component{
                         <input type="url" name="img" placeholder={this.props.auth.user.img || 'add image url'} onChange={e => this.handleChange(e)}/>
                         <Link to='/upload'><button className="uploadImage">Upload</button></Link>
                     </div>
-                    <input type="submit"value="submit" />
+                    <div className="colorInput">
+                        <input name="color" type="color" onBlur={e => this.handleChange(e)}/>
+                        <div className="fakeButton">
+                            <p>Select a color</p>
+                            <div className="colorHolder" style={{backgroundColor: this.state.color}}></div>
+                        </div>
+                    </div>
+                        <input type="submit" value="submit" />
                 </form>
             </div>
         )
