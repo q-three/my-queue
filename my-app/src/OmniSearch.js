@@ -25,6 +25,7 @@ class OmniSearch extends Component{
       if(this.state.type === '') throw new Error('Select a category')
       return request(`/search/${this.state.type}`, 'post', {query: this.state.query})
       .then(response => {
+        console.log(response)
         this.setState({
           results: response
         })

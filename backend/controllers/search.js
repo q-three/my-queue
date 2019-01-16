@@ -34,6 +34,30 @@ function video(req, res, next){
 }
 
 function games(req, res, next){
+  let preImgRes
+  const URL = `https://api-v3.igdb.com/games/?search=${createQuery(req.body.query)}&fields=name,cover,url`
+  return model.games(URL)
+  .then(response => {
+    preImgRes = response
+    console.log(response)
+    const promiseArray = response.map(game => {
+      model.covers(`https://api-v3.igdb.com/covers/?filter[id][eq]=${game.cover}&fields=image_id`)
+    })
+    return Promise.all(promiseArray)
+    .then(responses => {
+      console.log(responses)
+      let sanitizedRes = preImgRes.map((ele, i) => {
+        ele.img = `https://images.igdb.com/igdb/image/upload/t_cover_small/${responses[i]}.jpg`
+        ele.desc = ele.name
+        return ele
+      })
+      res.status(200).send(sanitizedRes)      
+    })
+    .catch(err => err)
+    // img: https://images.igdb.com/igdb/image/upload/t_cover_small/${...}.jpg
+    
+    
+  })
 
 }
 
@@ -46,7 +70,7 @@ function places(req, res, next){
       return {
         img: `https://maps.googleapis.com/maps/api/place/photo?maxheight=100&photoreference=${ele.photos[0].photo_reference}&key=${api.googleKey}`,
         title: ele.name,
-        desc: ele.formatted_address,
+        desc: ele.formatted_address,  
         url: `https://www.google.com/search?q=${createQuery(req.body.query)}`
       }
     })
@@ -59,7 +83,6 @@ function places(req, res, next){
 function createQuery(str){
   let query = str.split(' ')
   return query.join('+')
-  //may need to have sparate query creator for %20
 }
 
 module.exports = {music, video, games, places}

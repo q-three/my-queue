@@ -31,7 +31,7 @@ class SearchResults extends Component{
                     })}
                   />
           })
-        : <p>...</p>}
+        : <p className="ellipses"><span>.</span><span>.</span><span>.</span></p>}
       </div>
     )
   }

@@ -549,3 +549,30 @@ hr{
 .addQueueItem .warning{
     width:100%;
 }
+
+@keyframes grow{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.5)}
+    100%{transform:scale(1)}
+}
+.ellipses{
+    font-size:50px;
+    text-align:center;
+    height:20px;
+    margin-bottom:50px;
+    padding-top:-20px;
+}
+
+.ellipses span:nth-of-type(1), .ellipses span:nth-of-type(3){
+    display:inline-block;
+    height:20px;
+    line-height:0px;
+    animation:grow 2s ease-in-out infinite;
+}
+
+.ellipses span:nth-of-type(2){
+    display:inline-block;
+    height:20px;
+    line-height:0px;
+    animation:grow 2.25s ease-in-out infinite
+}
