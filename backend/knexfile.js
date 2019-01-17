@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const {dbName} = require('../project-details')
+const dbName = 'my_queue'
 
 module.exports = {
     development: {
