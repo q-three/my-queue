@@ -14,6 +14,13 @@ for friends to checkout or build a list for yourself. News Articles? Music? Book
 4. Frontend (my-app):
 ..1. `npm start`
 
+### Dev Notes
+On the backend we used a .env file that looked like: <br>
+`SECRET=someformoflongtexthere`
+`CLOUDINARY_URL=cloudinary://....`
+
+On the front env we had a .env.development that looked like: <br>
+`REACT_APP_BASE_URL=http://localhost:8080`
 
 ## Created Using 
 
