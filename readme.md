@@ -6,7 +6,7 @@ for friends to checkout or build a list for yourself. News Articles? Music? Book
 
 ## Screenshots
 ![logging in](screenshots/login.gif "Logging in to myQueue")
-![filtering](screenshots/fitler.gif "filtering content")
+![filtering](screenshots/filter.gif "filtering content")
 ![using Omnisearch](screenshots/omnisearch.gif "using omni search")
 ![editing color](screenshots/colorchange.gif "Changing settings for profile")
 
