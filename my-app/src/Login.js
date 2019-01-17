@@ -40,6 +40,10 @@ class Login extends Component{
     render(){
         return(
             <div className="login">
+                <div className="loginHeader">
+                    <img src="img/logo.png" alt="myQueue logo"/> 
+                    <h1>myQueue</h1>
+                </div>
                 <form id="login" onSubmit={(e) => this.handleSubmit(e)}>
                     <input id="username" type="text" placeholder="username" required onChange={(e) => this.handleChange(e)}/>
                     <input id="password" type="password" placeholder="password" minLength="8" required onChange={(e) => this.handleChange(e)}/>

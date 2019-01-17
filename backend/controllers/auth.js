@@ -1,4 +1,5 @@
 const model = require('../models/auth')
+const userModel = require('../models/users')
 const jwt = require('jsonwebtoken')
 
 function login(req, res, next) {
@@ -28,7 +29,11 @@ function authenticate(req, res, next) {
 }
 
 function authStatus(req, res, next) {
-    res.status(200).send({ user: req.claim.sub })
+    return userModel.getUser(req.claim.sub.id)
+    .then(result =>{
+        return res.status(200).send({ user: result })
+    })
+    .catch(next)
 }
 
 function checkRequest(req, res, next) {

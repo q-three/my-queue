@@ -4,6 +4,10 @@
     box-sizing:border-box;
 }
 
+body{
+    padding-bottom:100px;
+}
+
 .hidden{
     visibility: hidden;
 }
@@ -14,7 +18,7 @@ form, .actions{
     border-radius:5px;
     width:75%;
     padding:20px;
-    margin:15vh auto 0;
+    margin:0 auto;
 }
 
 input, label{
@@ -80,6 +84,24 @@ select:focus, input:focus{
     100%{transform:rotate(360deg)}
 }
 
+.loginHeader{
+    width:75%;
+    margin:50px auto 20px;
+    display:flex;
+    justify-content: space-between;
+    align-items:flex-end;
+}
+
+.loginHeader h1{
+    vertical-align:bottom;
+    display:inline;
+    font-size: 42px;
+}
+
+.loginHeader img{
+    height:50px;
+    width:50px;
+}
 
 /*===========LandingPage============*/
 .accountActions{
@@ -127,6 +149,9 @@ header{
 .home footer{
     height:100px;
     background-color:#f0f0f0;
+    position:absolute;
+    bottom:0;
+    width:100%;
 }
 
 .greeting{
@@ -134,11 +159,15 @@ header{
     width:100%;
     top:125px;
     display:flex;
+    color:white;
 }
 
 .greeting p{
     line-height:100px;
     margin-left:10px;
+    margin-top:5px;
+    font-weight:bold;
+    font-size:16px;
 }
 
 .letter{
@@ -158,6 +187,7 @@ header{
 .queue{
     margin-top:95px;
 }
+
 .button{
     height:50px;
     width:50px;
@@ -244,7 +274,7 @@ header{
 }
 
 .read{
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .cardText{
@@ -262,24 +292,24 @@ header{
 }
 
 /* Styling Game Cards */
-.itemHeader .game{
+.itemHeader .games{
     background-color:#008773;
 }
-.game i.fa-star-o, .game i.fa-star{
+.games i.fa-star-o, .games i.fa-star{
     color:#008773
 }
-.itemHeader.game{
+.itemHeader.games{
     border-right:10px solid #008773
 }
 
 /*Styling Link Cards */
-.itemHeader .link{
+.itemHeader .links{
     background-color:#1C3341
 }
-.link i.fa-star-o, .link i.fa-star{
+.links i.fa-star-o, .links i.fa-star{
     color:#1C3341
 }
-.itemHeader.link{
+.itemHeader.links{
     border-right:10px solid #1C3341
 }
 
@@ -307,13 +337,13 @@ header{
 }
 
 /* Styling Video Cards */
-.itemHeader .places{
+.itemHeader .video{
     background-color:#6BB983
 }
-.places i.fa-star-o, .places i.fa-star{
+.vieo i.fa-star-o, .video i.fa-star{
     color:#6BB983
 }
-.itemHeader.places{
+.itemHeader.video{
     border-right:10px solid #6BB983
 }
 
@@ -382,10 +412,6 @@ header{
     background: radial-gradient(at 70% 70%, #00000020, #00000090);
     z-index:98;
     animation:fadeIn .25s ease-in;
-}
-
-.selected{
-    background-color:red !important;
 }
 
 /*===========Edit Profile============*/
@@ -468,7 +494,7 @@ input[type="color"]{
 }
 .colorInput p{
     width:100%; 
-    padding-left:20px;
+    padding-left:10px;
     padding-right:none;
 }
 
@@ -520,8 +546,9 @@ input[type="color"]{
 }
 
 .userResult{
-    height:75px;
+    height:85px;
     display:flex;
+    padding:5px 5px;
 }
 
 .userImg{
@@ -529,11 +556,19 @@ input[type="color"]{
     width:75px;
     margin-right:20px;
     font-size:60px;
-    line-height:75px;
+    line-height:95px;
     text-align:center;
     border:1px solid #ccc;
+    background-size:100%;
+    background-color:#ccc;
+    border-radius:50%;
+    margin-bottom:5px;
 }
 
+.userImg h3{
+    height:75px;
+    color:#333;
+}
 .userResult p {
     font-size: 24px;
     line-height:75px;
@@ -594,7 +629,7 @@ hr{
     line-height:30px;
     text-align:center;
     position:absolute;
-    top: 70px;
+    top: 125px;
     right:20px;
     z-index:9999;
 }
@@ -634,6 +669,7 @@ hr{
     height:350px;
     overflow-y:scroll;
     border:1px solid #ccc;
+    outline:1px solid red;
 }
 
 .searchItem{
@@ -646,6 +682,7 @@ hr{
 .searchItem img{
     position:absolute;
     max-height:100px;
+    max-width:100px;
     /* clip:rect(0px, 100px, 100px, 0px); */
 }
 

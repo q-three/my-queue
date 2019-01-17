@@ -11,7 +11,7 @@ class Friends extends Component{
     super(props)
     this.state ={
       searching: false,
-      query: ''
+      query: '',
     }
   }
 
@@ -74,7 +74,7 @@ class Friends extends Component{
             type="text" 
             placeholder="search for friends..."
           />
-          {this.state.searching ? <div className="searchResults">{this.props.friends.users.filter(this.byFriends).filter(this.byQuery).map((user, i) => <UserResult addFriend={() => this.addFriend(user.id)} key={i} {...user}/>)}</div> : null}
+        {this.state.searching ? <div className="searchResults">{this.props.friends.users.filter(this.byFriends).filter(this.byQuery).map((user, i) => <UserResult handleClick={this.handleFocus} addFriend={() => this.addFriend(user.id)} key={i} {...user}/>)}</div> : null}
         <hr/>
         <main className="friendsList"> 
           {this.props.friends.friends.length ? this.props.friends.friends.map((friend, i) => <FriendListItem key={i} {...friend}/>) : <p className="emptyState">You don't have any friends yet :(</p>}

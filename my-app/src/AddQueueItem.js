@@ -88,7 +88,7 @@ class AddQueueItem extends Component{
                 <input className='inputBox' type='text' placeholder="description" name='desc' value={this.state.desc} onChange={this.handleChange}></input>
                 <input className='inputBox' type='text' placeholder="URL" name='url' value={this.state.url} onChange={this.handleChange}></input>
                 <br/><br/>
-                <input type='submit' className='btn'></input>
+                <input type='submit' className='btn' disabled={this.state.url === '' || this.state.desc === '' ? true : false}></input>
                 </form>
                 {this.state.success ? <div className="success">{this.state.success}</div> : null}
             </div>

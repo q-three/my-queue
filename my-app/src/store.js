@@ -7,4 +7,4 @@ import friends from './reducers/friends'
 import queue from './reducers/queue'
 const reducers = combineReducers({auth, friends, queue})
 
-export default createStore(reducers, applyMiddleware(logger, thunk))
+export default createStore(reducers, applyMiddleware(thunk, logger))

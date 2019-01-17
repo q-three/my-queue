@@ -5,6 +5,7 @@ export function getQueue(id){
   return async dispatch => {
     try{
       const response = await request(`/users/u/${id}/queue`)
+      console.log(response)
       dispatch({
         type:GET_QUEUE,
         payload: response

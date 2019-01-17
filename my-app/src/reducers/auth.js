@@ -10,7 +10,7 @@ const initialState  = {
 export default function auth(state=initialState, {type, payload}){
     switch(type){
         case SET_AUTHENTICATION:
-            if (!payload) return state
+            if (!payload) return {...state, pending:false}
             if (payload.response && payload.response.data && payload.response.data.message) {
                 if (payload.response.data.message === "Couldn't find it, bruh") return {...state, pending: false}
                 return { ...state, pending: false, user: null, error: payload.response.data.message }
@@ -35,6 +35,9 @@ export default function auth(state=initialState, {type, payload}){
             }
             return { ...state, pending: false, error: null, user: payload }
         case UPLOAD_IMAGE:
+            if (payload.response && payload.response.data && payload.response.data.message) {
+                return { ...state, pending: false, success: null, error: payload.response.data.message }
+            }
             return {...state, user: payload}
             default:
             return state

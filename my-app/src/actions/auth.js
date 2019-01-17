@@ -36,6 +36,7 @@ export function signup(payload){
 
 export const EDIT_PROFILE = 'EDIT_PROFILE'
 export function editProfile(payload){
+    console.log(payload, 'this is the response from edit profile')
     return async dispatch => {
         try{
             const [response] = await request(`/users/u/${payload.id}/`, 'put', payload)

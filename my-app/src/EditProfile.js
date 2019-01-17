@@ -18,7 +18,6 @@ class EditProfile extends Component{
     }
     
     handleChange = (e) =>{
-        console.log('firing')
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -37,7 +36,6 @@ class EditProfile extends Component{
     render(){
         return (
             <div className="editProfile">
-                {console.log(this.state)}
                 <header style={{
                     backgroundColor: `${this.props.auth.user.color ? this.props.auth.user.color : '#ccc'}`}}>
                     <Link className="backButton" to='/home'><i className="fa fa-arrow-left"></i></Link>
@@ -45,14 +43,14 @@ class EditProfile extends Component{
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <h3>Edit Profile</h3>
                     <hr/>
-                    <input type="text" name="f_name" placeholder={this.props.auth.user.f_name} required onChange={e => this.handleChange(e)}/>
-                    <input type="text" name="l_name" placeholder={this.props.auth.user.l_name} required onChange={e => this.handleChange(e)}/>
+                    <input type="text" name="f_name" placeholder={this.props.auth.user.f_name} onChange={e => this.handleChange(e)}/>
+                    <input type="text" name="l_name" placeholder={this.props.auth.user.l_name} onChange={e => this.handleChange(e)}/>
                     <div className="imageInput">
                         <input type="url" name="img" placeholder={this.props.auth.user.img || 'add image url'} onChange={e => this.handleChange(e)}/>
                         <Link to='/upload'><button className="uploadImage">Upload</button></Link>
                     </div>
                     <div className="colorInput">
-                        <input name="color" type="color" onBlur={e => this.handleChange(e)}/>
+                        <input name="color" type="color" onBlur={e => this.handleChange(e)} onKeyUp={e => this.handleChange(e)} onClick={e => this.handleChange(e)}/>
                         <div className="fakeButton">
                             <p>Select a color</p>
                             <div className="colorHolder" style={{backgroundColor: this.state.color}}></div>

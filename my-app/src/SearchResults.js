@@ -16,12 +16,12 @@ class SearchResults extends Component{
   render(){
     return (
       <div className="searchResults" data-type={this.props.type}>
-        {console.log(this.props.results)}
         {Array.isArray(this.props.results) 
         ? this.props.results.map((item, i) => {
           return  <Result 
                     key={i} 
                     {...item}
+                    clearQuery={this.props.handleClick}
                     handleClick={() => this.addToQueue({
                       type:this.props.type, 
                       url: item.url, 
