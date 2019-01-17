@@ -4,8 +4,17 @@
     box-sizing:border-box;
 }
 
+html{
+    background-color:#ccc;
+}
 body{
     padding-bottom:100px;
+    max-width:500px;
+    margin:0 auto;
+    background-color:white;
+    border-left:1px solid #999;
+    border-right:1px solid #999;
+    position:relative;
 }
 
 .hidden{
@@ -128,6 +137,9 @@ select:focus, input:focus{
 .logout:hover{
     opacity:0.8;
     cursor:pointer;
+}
+.home{
+    position:relative;
 }
 
 .home header i{
