@@ -1,5 +1,5 @@
 const axios = require('axios')
-const api = require('../api')
+
 
 function music(URL){
     return axios.get(URL)
@@ -19,7 +19,7 @@ function games(URL){
 	    method: 'POST',
     	headers:{
       	'Accept':'application/json',
-      	'user-key': api.igdbKey
+      	'user-key': process.env.IGDBKEY
     	},
     	data: 'fields game,name'
   	})
@@ -33,7 +33,7 @@ function covers(URL){
 	    method: 'POST',
 	    headers: {
       	'Accept': 'application/json',
-      	'user-key': api.igdbKey
+				'user-key': process.env.IGDBKEY
     	},
     	// data: 'fields image_id;'
  	 })
