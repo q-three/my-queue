@@ -1,21 +1,22 @@
+# My Queue
+Recommend cool things to your friends!<br>
+
+This repo contains both a Back-End and Front-End React application to recommend links<br>
+for friends to checkout or build a list for yourself. News Articles? Music? Books? Whatever!<br>
+
+## To get started 
+1. Clone down the repo and navigate to each sub-directory (`backend` and `my-app`) and run `npm i`
+2. `createdb my_queue_dev`
+3. Backend:
+..1. `npm run knex migrate:latest`
+..2.`npm run knex seed:run`
+..3. Start up Backend with `npm run dev`
+4. Frontend (my-app):
+..1. `npm start`
+
+
+## Created Using 
 ![turnkey logo](my-app/public/icon.png) 
-# Turnkey
+### Turnkey
 Skip the set up - jump into the fun stuff!
-
-## What is it?
-### Turnkey is a boilerplate, which creates...
-* A React app with components for login, signup, and protected pages
-* An Express server using models, routes, and controllers (opinionated architecture for life!)
-* A PostgreSQL database to store user signups
-
-### Authentication? Turnkey's got you covered.
-Turnkey stores hashed passwords using bcrypt and uses JSON Web Tokens to authenticate users.
-
-
-## How do I use it?
-1. Clone this repo
-2. Install Node.JS if necessary
-3. In the cloned repo run `sh init.sh`
-4. Designate a project and database name
-5. Start coding!
-
+(https://github.com/dmkite/react-turnkey)
