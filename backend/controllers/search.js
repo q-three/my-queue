@@ -1,5 +1,4 @@
 const model = require('../models/search')
-const api = require('../api')
 
 function music(req, res, next){
   	const URL = `https://itunes.apple.com/search?term=${createQuery(req.body.query)}&entity=album&limit=5`
@@ -19,7 +18,7 @@ function music(req, res, next){
 	}
 	
 function video(req, res, next){
-	  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${api.tmdbKey}&query=${createQuery(req.body.query)}`
+	  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDBKEY}&query=${createQuery(req.body.query)}`
   	return model.video(URL)
   	.then(response => {
 	    const sanitizedRes = response.map(ele => {
@@ -54,12 +53,12 @@ function games(req, res, next){
 }
 
 function places(req, res, next){
-  	const URL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${createQuery(req.body.query)}&inputtype=textquery&fields=photos,name,formatted_address&locationbias=ipbias&key=${api.googleKey}`
+  	const URL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${createQuery(req.body.query)}&inputtype=textquery&fields=photos,name,formatted_address&locationbias=ipbias&key=${process.env.GOOGLEKEY}`
   	return model.places(URL)
   	.then(response => {
 	    const sanitizedRes = response.map(ele => {
       	return {
-	        img: `https://maps.googleapis.com/maps/api/place/photo?maxheight=100&photoreference=${ele.photos[0].photo_reference}&key=${api.googleKey}`,
+					img: `https://maps.googleapis.com/maps/api/place/photo?maxheight=100&photoreference=${ele.photos[0].photo_reference}&key=${process.env.GOOGLEKEY}`,
         	title: ele.name,
         	desc: ele.formatted_address,  
         	url: `https://www.google.com/search?q=${createQuery(req.body.query)}`
