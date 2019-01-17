@@ -1,4 +1,4 @@
 node_modules
 my-app/node_modules
 api.js
-.env.*
+
