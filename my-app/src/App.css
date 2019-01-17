@@ -5,7 +5,6 @@
 }
 
 body{
-    padding-bottom:100px;
     max-width:500px;
     margin:0 auto;
     background-color:white;
@@ -16,13 +15,17 @@ body{
         border-left:1px solid #999;
         border-right:1px solid #999;
         position:relative;
-        padding-top:50px;
         min-height:100vh;
     }    
 
     html{
         background-color:#ccc;
     }
+
+    footer{
+        bottom:0;
+    }
+   
 }
 
 .hidden{
@@ -102,8 +105,9 @@ select:focus, input:focus{
 }
 
 .loginHeader{
+    padding-top:50px;
     width:75%;
-    margin:50px auto 20px;
+    margin:0 auto 20px;
     display:flex;
     justify-content: space-between;
     align-items:flex-end;
@@ -148,6 +152,9 @@ select:focus, input:focus{
 }
 .home{
     position:relative;
+    top:0;
+    min-height:100vh;
+    padding-bottom:100px;
 }
 
 .home header i{
@@ -165,6 +172,7 @@ header{
     height:55px;
     background-color:#ccc;
 }
+
 
 .home footer{
     height:100px;
@@ -360,7 +368,7 @@ header{
 .itemHeader .video{
     background-color:#6BB983
 }
-.vieo i.fa-star-o, .video i.fa-star{
+.video i.fa-star-o, .video i.fa-star{
     color:#6BB983
 }
 .itemHeader.video{
@@ -538,7 +546,7 @@ input[type="color"]{
 
 .selectSearch{
     height:50px;
-    margin:10px 10px 0;
+    /* margin:10px 10px 0; */
     width: calc(100% - 20px);
     border-radius: 32px;
     border:1px solid #ccc;
@@ -576,7 +584,7 @@ input[type="color"]{
     width:75px;
     margin-right:20px;
     font-size:60px;
-    line-height:95px;
+    line-height:75px;
     text-align:center;
     border:1px solid #ccc;
     background-size:100%;
@@ -649,14 +657,14 @@ hr{
     line-height:30px;
     text-align:center;
     position:absolute;
-    top: 125px;
+    top: 175px;
     right:20px;
     z-index:9999;
 }
 
 /*===========Omni Search============*/
 .omniSearch{
-    width: calc(100% -20px);
+    width: 100%;
     display:flex;
     height:50px;
 }
@@ -736,7 +744,7 @@ select{
 }
 
 .selectSearch{
-    width:calc(100% - 10px);
+    width:100%;
 }
 
 hr{

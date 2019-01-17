@@ -16,7 +16,7 @@ export default function QueueItem(props){
                 <i className={`fa ${props.starred ? 'fa-star' : 'fa-star-o'}`} onClick={props.starItem}></i>
             </div>
             <div className="cardWrapper">
-                <div className="cardImg" style={{ backgroundImage: `url("${props.img.length ? props.img : 'https://www.transparenttextures.com/patterns/cartographer.png' }")`} } onClick={props.readItem}>
+                <div className="cardImg" style={{ backgroundImage: `url("${props.img.length ? props.img : 'http://www.transparenttextures.com/patterns/cartographer.png' }")`} } onClick={props.readItem}>
                     <a href={props.url} target="_blank" onClick={props.readItem}></a>
                     {!props.img.length ? <i className={faName[props.type]}></i> : null}
                 </div>
