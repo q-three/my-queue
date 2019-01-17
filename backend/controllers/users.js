@@ -48,7 +48,7 @@ function addFriend(req,res,next){
     const friend = req.body.id
     model.addFriend(id, friend)
     .then(result=>{
-        res.status(201).send(`You and ${result.f_name} are now friends!`)
+        res.status(201).send({username: result.username, img: result.img})
     })
     .catch(next)
 } //add a friend to a user's friend-list, makes a friend relation for both users
@@ -63,14 +63,14 @@ function getFriends(req,res,next){
 } //get friendlist for specific user
 
 function editUser(req,res,next){
+    console.log(req.body)
     const id=req.params.id
-
-    const edits = {} //Edit Body here
-    if(req.body.f_name ? edits.f_name = req.body.f_name : edits.f_name = null)
-    if(req.body.l_name ? edits.l_name = req.body.l_name : edits.l_name = null)
-    if(req.body.img ? edits.img = req.body.img : edits.img = null)
-    if(req.body.color ? edits.color = req.body.color : edits.color = null)
-
+    const edits = {
+        f_name: req.body.f_name ? req.body.f_name : null,
+        l_name: req.body.l_name ? req.body.l_name : null,
+        img: req.body.img ? req.body.img : null,
+        color: req.body.color ? req.body.color : null
+    } //Edit Body here
     model.editUser(id, edits)
     .then(result => {
         res.status(200).send(result)

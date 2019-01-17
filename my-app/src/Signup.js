@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Warning from './Warning'
 import { connect } from 'react-redux'
 import { bindActionCreators} from 'redux'
 import {signup} from './actions/auth'
@@ -52,6 +51,10 @@ class Signup extends Component{
     render(){
         return (
             <div className="signup">
+                <div className="loginHeader">
+                    <img src="img/logo.png" alt="myQueue logo" />
+                    <h1>myQueue</h1>
+                </div>
                 <form id="signup" onSubmit={(e) => this.handleSubmit(e)}>
                     <input id="f_name" type="text" placeholder="first name" maxLength="50" required onChange={(e) => this.handleChange(e)}/>
                     <input id="l_name" type="text" placeholder="last name" maxLength="50" required onChange={(e) => this.handleChange(e)}/>

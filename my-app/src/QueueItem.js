@@ -7,7 +7,7 @@ export default function QueueItem(props){
         video: 'fa fa-tv',
         game: 'fa fa-gamepad',
         places: 'fa fa-map-marker',
-        link: 'fa fa-link'
+        links: 'fa fa-link'
     }
     return (
         <div className={`queueItem ${props.type} ${props.read ? 'read' : null}`}>

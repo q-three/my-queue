@@ -13,7 +13,6 @@ function checkUser(userId){
 
 function getAll() {
     return knex('q_items')
-    .orderBy('read', 'desc') //added so results are ordered with unread queue items first
     .then(result => {
         return result
     })

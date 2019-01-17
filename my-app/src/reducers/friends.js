@@ -3,7 +3,8 @@ import {GET_FRIENDS, GET_ALL_USERS, ADD_FRIEND, SELECT_USER} from '../actions/fr
 const initialState = {
   friends: [],
   users: [],
-  selectedUser: null
+  selectedUser: null,
+  success: null
 }
 
 export default function(state=initialState, {type, payload}){
@@ -14,7 +15,9 @@ export default function(state=initialState, {type, payload}){
     case GET_ALL_USERS:
       return {...state, users: payload}
     case ADD_FRIEND:
-      return state
+      const newFriends = [payload, ...state.friends]
+
+      return {...state, friends: newFriends}
     case SELECT_USER:
       return {...state, selectedUser: payload}
     default:

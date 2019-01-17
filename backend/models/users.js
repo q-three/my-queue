@@ -128,6 +128,8 @@ function getUserQueue(id){
     .where('user_id', id)
     .select('q_items.desc as desc', 'q_items.img as img', 'q_items.id as id', 'q_items.read as read', 
             'q_items.starred as starred', 'q_items.url as url', 'q_items.type as type', 'users.f_name as referral_name') 
+    .orderBy('read', 'asc') //added so results are ordered with unread queue items first
+    .orderBy('id', 'desc') // added so newest results show up first
     .then(data => {
         return data
     })
