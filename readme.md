@@ -16,7 +16,7 @@ for friends to checkout or build a list for yourself. News Articles? Music? Book
 
 
 ## Created Using 
-![turnkey logo](my-app/public/icon.png) 
+
 ### Turnkey
 Skip the set up - jump into the fun stuff!
 (https://github.com/dmkite/react-turnkey)
