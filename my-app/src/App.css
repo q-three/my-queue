@@ -102,6 +102,7 @@ select:focus, input:focus{
     height:50px;
     width:50px;
 }
+
 /*===========LandingPage============*/
 .accountActions{
     width:100%;
@@ -186,6 +187,7 @@ header{
 .queue{
     margin-top:95px;
 }
+
 .button{
     height:50px;
     width:50px;
@@ -412,10 +414,6 @@ header{
     animation:fadeIn .25s ease-in;
 }
 
-.selected{
-    background-color:red !important;
-}
-
 /*===========Edit Profile============*/
 .backButton{
     font-size: 30px;
@@ -558,7 +556,7 @@ input[type="color"]{
     width:75px;
     margin-right:20px;
     font-size:60px;
-    line-height:75px;
+    line-height:95px;
     text-align:center;
     border:1px solid #ccc;
     background-size:100%;
@@ -567,6 +565,10 @@ input[type="color"]{
     margin-bottom:5px;
 }
 
+.userImg h3{
+    height:75px;
+    color:#333;
+}
 .userResult p {
     font-size: 24px;
     line-height:75px;
