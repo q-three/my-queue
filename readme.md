@@ -16,8 +16,12 @@ for friends to checkout or build a list for yourself. News Articles? Music? Book
 
 ### Dev Notes
 On the backend we used a .env file that looked like: <br>
-`SECRET=someformoflongtexthere`
-`CLOUDINARY_URL=cloudinary://....`
+`SECRET=someformoflongtexthere`<br>
+`CLOUDINARY_URL=cloudinary://....`<br>
+`TMDBKEY=...` The Movie Database API Key<br>
+`IGDBKEY=...` Internet Games Database API Key<br>
+`GOOGLEKEY=...` Google API Key<br>
+
 
 On the front env we had a .env.development that looked like: <br>
 `REACT_APP_BASE_URL=http://localhost:8080`
