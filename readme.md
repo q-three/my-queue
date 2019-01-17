@@ -24,7 +24,7 @@ On the backend we used a .env file that looked like: <br>
 
 
 On the front env we had a .env.development that looked like: <br>
-`REACT_APP_BASE_URL=http://localhost:8080`
+`REACT_APP_BASE_URL=https://localhost:8080`
 
 ## Created Using 
 
