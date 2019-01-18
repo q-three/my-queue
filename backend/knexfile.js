@@ -35,4 +35,4 @@ module.exports = {
             directory: path.join(__dirname, 'db', 'seeds')
         }
     }
-};
+}
