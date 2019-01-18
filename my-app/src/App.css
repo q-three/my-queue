@@ -787,3 +787,9 @@ hr{
     line-height:0px;
     animation:grow 2.25s ease-in-out infinite
 }
+
+i.fa-times {
+   left: 10px;
+   position: absolute;
+   color: white;
+}

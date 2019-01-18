@@ -21,7 +21,6 @@ export function starItem(userId, itemId){
   return async dispatch => {
     try{
       const [response] = await request(`/queue/${itemId}`, 'put')
-    
       dispatch({
         type:STAR_ITEM,
         payload:response
@@ -66,6 +65,21 @@ export function addItem(body){
       })
     }catch(err){
       console.error(err)
+    }
+  }
+}
+
+export const DELETE_ITEM = 'DELETE_ITEM'
+export function deleteItem(id) {
+  return async dispatch => {
+    try{
+      const response = await request(`/queue/${id}`, 'delete')
+      dispatch({
+        type: DELETE_ITEM,
+        payload: response
+      })
+    } catch(err) {
+      console.log(err)
     }
   }
 }

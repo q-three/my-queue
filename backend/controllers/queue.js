@@ -77,7 +77,7 @@ function readItem(req, res, next){
 function deleteItem(req,res,next){
     model.deleteItem(req.params.id)
     .then(result => {
-        res.status(202).send('That queue item has been Deleted!')
+        res.status(202).send({message: 'That queue item has been Deleted!', result: result})
     })
     .catch(next)
 } //deletes a queue item

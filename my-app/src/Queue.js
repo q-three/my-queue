@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import QueueItem from './QueueItem'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {getQueue, starItem, readItem} from './actions/queue'
+import {getQueue, starItem, readItem, deleteItem} from './actions/queue'
 
 class Queue extends Component{
 
@@ -16,6 +16,10 @@ class Queue extends Component{
     readItem = (id) => {
         return this.props.readItem(id)
     }
+    deleteItem = async (id) => {
+        let response = await this.props.deleteItem(id)
+        return this.props.getQueue(this.props.auth.user.id)
+    }
 
     byType = (ele) => {
         if(!ele || ele.starred === undefined || ele.type === undefined) return false
@@ -28,13 +32,13 @@ class Queue extends Component{
     render(){
         return(
             <div className="queue">
-                {this.props.queue.items.filter(this.byType).map((item, i) => <QueueItem starItem={() => this.starItem(item.id)} readItem={() => this.readItem(item.id)} key={i} {...item}/>)}
+                {this.props.queue.items.filter(this.byType).map((item, i) => <QueueItem deleteItem={() => this.deleteItem(item.id)} starItem={() => this.starItem(item.id)} readItem={() => this.readItem(item.id)} key={i} {...item}/>)}
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({queue: state.queue, auth:state.auth})
-const mapDispatchToProps = dispatch => bindActionCreators({getQueue, starItem, readItem}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({getQueue, starItem, readItem, deleteItem}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Queue)
