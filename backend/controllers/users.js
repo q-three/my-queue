@@ -18,52 +18,51 @@ function checkFriends(req,res,next){
     const friend = req.body.id
 
     model.checkFriends(id, friend)
-    .then(result => {
-        if(result === false) return next() //false meaning they are not already friends, false is good
-        throw {error: 400, message: `ERROR ${result}`} //I don't think this can get here, but just in case
-    })
-    .catch(next)
+        .then(result => {
+            if(result === false) return next() //false meaning they are not already friends, false is good
+            throw {error: 400, message: `ERROR ${result}`} //I don't think this can get here, but just in case
+        })
+        .catch(next)
 } //this is to ensure that a friend relationship doesn't already exist between the two
 
 
 function getAll(req,res,next){
     model.getAll()
-    .then(result => {
-        res.status(200).send(result)
-    })
-    .catch(next)
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(next)
 } //get all users
 
 function getUser(req,res,next){
     const id = req.params.id
     model.getUser(id)
-    .then(result => {
-        res.status(200).send(result)
-    })
-    .catch(next)
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(next)
 } //get specific user by id
 
 function addFriend(req,res,next){
     const id = req.params.id
     const friend = req.body.id
     model.addFriend(id, friend)
-    .then(result=>{
-        res.status(201).send({username: result.username, img: result.img})
-    })
-    .catch(next)
+        .then(result=>{
+            res.status(201).send({username: result.username, img: result.img})
+        })
+        .catch(next)
 } //add a friend to a user's friend-list, makes a friend relation for both users
 
 function getFriends(req,res,next){
     const id = req.params.id
     model.getFriends(id)
-    .then(result => {
-        res.status(200).send(result)
-    })
-    .catch(next)
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(next)
 } //get friendlist for specific user
 
 function editUser(req,res,next){
-    console.log(req.body)
     const id=req.params.id
     const edits = {
         f_name: req.body.f_name ? req.body.f_name : null,
@@ -72,19 +71,19 @@ function editUser(req,res,next){
         color: req.body.color ? req.body.color : null
     } //Edit Body here
     model.editUser(id, edits)
-    .then(result => {
-        res.status(200).send(result)
-    })
-    .catch(next)
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(next)
 } //edit user's profile
 
 function getUserQueue(req,res,next){
     const id = req.params.id
     model.getUserQueue(id)
-    .then(result => {
-        res.status(200).send(result)
-    })
-    .catch(next)
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(next)
 } //get list of queue items for a specific user
 
 module.exports = {signup, getAll, getUser, addFriend, getFriends, editUser, getUserQueue, checkFriends}
