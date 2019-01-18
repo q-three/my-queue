@@ -1,4 +1,4 @@
-import {GET_QUEUE, STAR_ITEM, READ_ITEM, FILTER, ADD_ITEM} from '../actions/queue'
+import {GET_QUEUE, STAR_ITEM, READ_ITEM, FILTER, ADD_ITEM, DELETE_ITEM} from '../actions/queue'
 
 const initialState = {
     items: [],
@@ -21,11 +21,14 @@ export default function queue(state=initialState, {type, payload}){
         readState[idxR].read = payload.read
         return {...state, items: readState}
     case ADD_ITEM:
-        const newItems = state.items.push(payload)
-        return {...state, newItems}
+      const newItems = state.items.concat(payload[0])
+      return {...state, newItems}
     case FILTER:
-        if (state.filter === payload) return {...state, filter: ''}
-        return {...state, filter: payload}
+      if (state.filter === payload) return {...state, filter: ''}
+      return {...state, filter: payload}
+    case DELETE_ITEM:
+      const itemsLeft = state.items.filter(x => x.id !== payload.result.id)
+      return {...state, items: itemsLeft}
     default:
         return state
     }

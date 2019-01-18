@@ -14,6 +14,7 @@ export default function QueueItem(props){
             <div className={`itemHeader ${props.type}`}>
                 <div className={props.type}></div>
                 <i className={`fa ${props.starred ? 'fa-star' : 'fa-star-o'}`} onClick={props.starItem}></i>
+                <i className={'fa fa-times'} onClick={props.deleteItem}></i>
             </div>
             <div className="cardWrapper">
                 <div className="cardImg" style={{ backgroundImage: `url("${props.img.length ? props.img : 'http://www.transparenttextures.com/patterns/cartographer.png' }")`} } onClick={props.readItem}>
